@@ -24,6 +24,7 @@
 <img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-04-22-495_com.ghisler.android.TotalCommander.jpg" style="width:300px;"/>
 </div>
 
+<br>
 <p>Download the TXT Notes APK file: 
 https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</p>
 
@@ -54,6 +55,7 @@ https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</p>
 <img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-04-22-495_com.ghisler.android.TotalCommander.jpg" style="width:300px;"/>
 </div>
 
+<br>
 <p>Скачать APK файл TXT Notes: 
 https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</p>
 
@@ -84,6 +86,7 @@ https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</p>
 <img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-04-22-495_com.ghisler.android.TotalCommander.jpg" style="width:300px;"/>
 </div>
 
+<br>
 <p>Laden Sie die TXT Notes APK-Datei herunter: 
 https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</p>
 
@@ -114,6 +117,7 @@ https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</p>
 <img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-30-928_com.txtnotes.jpg" style="width:300px;"/>
 <img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-04-22-495_com.ghisler.android.TotalCommander.jpg" style="width:300px;"/>
 </div>
+<br>
 <p>Descargar el archivo APK de TXT Notes: 
 https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</p>
 
