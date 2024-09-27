@@ -15,14 +15,11 @@
 
 <p>To open a file shown in the list, click on it. To exit the file editing screen press X button.</p>
 
+<div>
 <img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-55-00-835_com.txtnotes.jpg" style="width:300px;"/>
-<img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-55-00-835_com.txtnotes.jpg" 
-style="width:300px;"/>
-<img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-08-766_com.txtnotes.jpg" 
-style="width:300px;"/>
-<img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-25-050_com.txtnotes.jpg" 
-style="width:300px;"/>
-<img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-30-928_com.txtnotes.jpg" 
-style="width:300px;"/>
-<img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-04-22-495_com.ghisler.android.TotalCommander.jpg" 
-style="width:300px;"/>
+<img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/Screenshot_2024-09-26-23-09-36-947_com.txtnotes.jpg" style="width:300px;"/>
+<img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-08-766_com.txtnotes.jpg" style="width:300px;"/>
+<img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-25-050_com.txtnotes.jpg" style="width:300px;"/>
+<img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-30-928_com.txtnotes.jpg" style="width:300px;"/>
+<img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-04-22-495_com.ghisler.android.TotalCommander.jpg" style="width:300px;"/>
+</div>
