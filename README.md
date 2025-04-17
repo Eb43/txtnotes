@@ -1,6 +1,7 @@
 <h1>TXTnotes</h1>
-
-
+<p>Download the TXT Notes APK file: 
+https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</p>
+<br>
 <p><img alt="android battery voltage display" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/TXTNotes/TXTNotes_icon.png" style="width:130px;"/> Make Android notes in tXT files and save them anywhere, including external microSD card. Transfer Android notes in a standard TXT format supported by Windows, MacOS, Linux, ChromeOS, Android, iOS. </p>
 
 <p>Choose a folder for the app to read and save TXT files. Edit any existing TXT file in that folder. </p>
@@ -25,8 +26,6 @@
 </div>
 
 <br>
-<p>Download the TXT Notes APK file: 
-https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</p>
 
 <hr>
 
