@@ -50,7 +50,7 @@
 <h2>Additional Information</h2>
 <p>TXTNotes provides a practical solution for users who prefer working with standard TXT files and managing them locally. It is a suitable option for those who prioritize offline access, direct control over file storage, and cross-platform compatibility.</p>
 
-<p>For further details, visit the official application page: <a href="https://eb43.github.io/txtnotes-android-app-notes-in-txt-files.html" target="_blank">TXTNotes Official Page</a></p>
+<p>For further details, visit the official application page: <a href="https://github.com/Eb43/txtnotes/blob/main/README.md" target="_blank">TXTNotes Official Page</a></p>
 
 <br>
 <ul>
