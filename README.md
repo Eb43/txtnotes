@@ -2,6 +2,10 @@
 <img alt="android txt notes microsd app logo icon" style="margin-left: 0 !important; width: auto; height: 130px;" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/TXTNotes/TXTNotes_icon.png" style="width:130px;"/>
 <p>Download the app installation APK file: 
 <a href="https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk">https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</a></p>
+<div>
+<img alt="android notes in txt files in user selected folder on microsd" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/download.jpg" style="width:700px; display: inline-block; margin-left:30px;"/>
+</div>
+
 <br>
 
 <p>Make Android notes in tXT files and save them anywhere, including external microSD card. Transfer Android notes in a standard TXT format supported by Windows, MacOS, Linux, ChromeOS, Android, iOS. </p>
