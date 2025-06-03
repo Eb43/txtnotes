@@ -8,10 +8,10 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import android.icu.text.SimpleDateFormat;
 import androidx.annotation.Nullable;
@@ -34,13 +34,8 @@ import android.util.Log;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.stream.Collectors;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -50,17 +45,31 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_PERMISSIONS = 2;
     private static final long REFRESH_INTERVAL_MS = 60000; // 60 seconds
 
+    private static final int PreviewFirstCharactersFromFile = 250; //Show first N characters in preview
     private TextView statusTextView;
     private TextView currentDirectoryPath;
     private ListView fileListView;
     private Uri selectedFolderUri;
     private Handler handler;
     private Runnable rescanRunnable;
+    private FileCardAdapter fileCardAdapter; // Custom card adapter
+
+    // Background executor for async operations
+    private ExecutorService backgroundExecutor;
+
+    // Main thread handler for UI updates
+    private Handler mainHandler = new Handler(Looper.getMainLooper());
+
+    // Track if we're currently loading to prevent multiple concurrent loads
+    private volatile boolean isLoading = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialize executor
+        backgroundExecutor = Executors.newSingleThreadExecutor();
 
         fileListView = findViewById(R.id.fileListView);
         statusTextView = findViewById(R.id.statusTextView);
@@ -70,20 +79,25 @@ public class MainActivity extends AppCompatActivity {
         selectFolderButton.setOnClickListener(v -> openFolderChooser());
 
         Button refreshButton = findViewById(R.id.refreshButton);
-        refreshButton.setOnClickListener(v -> handler.post(rescanRunnable));
+        refreshButton.setOnClickListener(v -> {
+            if (!isLoading && selectedFolderUri != null) {
+                displayTxtFiles(selectedFolderUri);
+            }
+        });
 
         FloatingActionButton newFileButton = findViewById(R.id.newFileButton);
         newFileButton.setOnClickListener(v -> createNewFile());
 
         // Initialize the handler and rescan folder
-        handler = new Handler();
+        handler = new Handler(Looper.getMainLooper());
         rescanRunnable = new Runnable() {
             @Override
             public void run() {
-                if (selectedFolderUri != null) {
-                    displayTxtFiles(selectedFolderUri); // Rescan the selected directory
+                if (selectedFolderUri != null && !isLoading) {
+                    displayTxtFiles(selectedFolderUri);
                 }
-                // handler.postDelayed(this, REFRESH_INTERVAL_MS); // Reschedule every 5 seconds
+                // Schedule next refresh
+                handler.postDelayed(this, REFRESH_INTERVAL_MS);
             }
         };
 
@@ -113,16 +127,57 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Start rescanning when the activity resumes
-        handler.post(rescanRunnable);
+        Log.d("MainActivity", "onResume called");
+
+        // Recreate executor if it was shut down
+        if (backgroundExecutor == null || backgroundExecutor.isShutdown()) {
+            backgroundExecutor = Executors.newSingleThreadExecutor();
+        }
+
+        // Start rescanning when the activity resumes (with delay to avoid immediate load)
+        if (selectedFolderUri != null) {
+            handler.postDelayed(() -> {
+                if (!isLoading) {
+                    displayTxtFiles(selectedFolderUri);
+                }
+            }, 500); // Small delay to let UI settle
+        }
+
+        // Start periodic refresh
+        handler.postDelayed(rescanRunnable, REFRESH_INTERVAL_MS);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d("MainActivity", "onPause called");
         // Stop rescanning when the activity pauses
         handler.removeCallbacks(rescanRunnable);
+
+        // Cancel any pending UI updates
+        handler.removeCallbacksAndMessages(null);
+        mainHandler.removeCallbacksAndMessages(null);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("MainActivity", "onDestroy called");
+
+        // Clean up handlers
+        if (handler != null) {
+            handler.removeCallbacksAndMessages(null);
+        }
+        if (mainHandler != null) {
+            mainHandler.removeCallbacksAndMessages(null);
+        }
+
+        // Shutdown executor
+        if (backgroundExecutor != null && !backgroundExecutor.isShutdown()) {
+            backgroundExecutor.shutdownNow(); // Use shutdownNow() for immediate termination
+        }
+    }
+
     private boolean checkPermissions() {
         return ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
     }
@@ -136,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (grantResults != null && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                loadSelectedFolder(); // Load the selected folder if permission is granted
+                loadSelectedFolder();
             } else {
                 Toast.makeText(this, "Permission denied to read external storage.", Toast.LENGTH_SHORT).show();
             }
@@ -197,106 +252,191 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayTxtFiles(Uri uri) {
-        ArrayList<HashMap<String, String>> fileList = new ArrayList<>();
-        DocumentFile directory = DocumentFile.fromTreeUri(this, uri);
+        // Prevent multiple concurrent loads
+        if (isLoading) {
+            Log.d("MainActivity", "Already loading, skipping...");
+            return;
+        }
 
-        if (directory != null && directory.isDirectory()) {
-            DocumentFile[] files = directory.listFiles();
+        isLoading = true;
+        Log.d("MainActivity", "Starting to load files...");
 
-            if (files != null) {
-                ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-                List<Future<HashMap<String, String>>> futures = new ArrayList<>();
+        // Check if executor is available
+        if (backgroundExecutor == null || backgroundExecutor.isShutdown()) {
+            Log.w("MainActivity", "Executor unavailable, recreating...");
+            backgroundExecutor = Executors.newSingleThreadExecutor();
+        }
 
-                for (DocumentFile file : files) {
-                    if (file.getName() != null && file.getName().toLowerCase().endsWith(".txt")) {
-                        Future<HashMap<String, String>> future = executor.submit(() -> {
-                            HashMap<String, String> map = new HashMap<>();
-                            String fileName = file.getName();
-                            long lastModified = file.lastModified();
+        backgroundExecutor.execute(() -> {
+            try {
+                ArrayList<HashMap<String, String>> fileList = new ArrayList<>();
+                ArrayList<DocumentFile> txtFiles = new ArrayList<>();
+                DocumentFile directory = DocumentFile.fromTreeUri(this, uri);
 
-                            map.put("file_name", fileName);
+                if (directory != null && directory.isDirectory()) {
+                    DocumentFile[] files = directory.listFiles();
 
-                            // Read first 200 characters in background thread
-                            String fileContentPreview = getFirstCharactersFromFile(file, 200);
-                            map.put("file_content", fileContentPreview);
+                    if (files != null) {
+                        for (DocumentFile file : files) {
+                            if (file.getName() != null && file.getName().toLowerCase().endsWith(".txt")) {
+                                HashMap<String, String> map = new HashMap<>();
+                                String fileName = file.getName();
+                                long lastModified = file.lastModified();
 
-                            map.put("last_modified", String.valueOf(lastModified));
+                                map.put("file_name", fileName);
+                                map.put("file_content", "Loading...");
+                                map.put("last_modified", String.valueOf(lastModified));
+                                fileList.add(map);
+                                txtFiles.add(file);
+                            }
+                        }
 
-                            return map;
-                        });
-
-                        futures.add(future);
+                        // Sort both lists together to maintain correspondence
+                        for (int i = 0; i < fileList.size() - 1; i++) {
+                            for (int j = i + 1; j < fileList.size(); j++) {
+                                long time1 = Long.parseLong(fileList.get(i).get("last_modified"));
+                                long time2 = Long.parseLong(fileList.get(j).get("last_modified"));
+                                if (time1 < time2) { // Newer files first
+                                    Collections.swap(fileList, i, j);
+                                    Collections.swap(txtFiles, i, j);
+                                }
+                            }
+                        }
                     }
                 }
 
-                for (Future<HashMap<String, String>> future : futures) {
-                    try {
-                        fileList.add(future.get());
-                    } catch (InterruptedException | ExecutionException e) {
-                        e.printStackTrace();
-                    }
+                // Update UI on main thread - check if activity is still valid
+                if (!isFinishing() && !isDestroyed()) {
+                    mainHandler.post(() -> {
+                        try {
+                            updateFileListUI(fileList);
+                            loadFilePreviewsAsync(fileList, txtFiles);
+                        } catch (Exception e) {
+                            Log.e("MainActivity", "Error updating UI", e);
+                        } finally {
+                            isLoading = false;
+                        }
+                    });
+                } else {
+                    isLoading = false;
                 }
-
-                executor.shutdown();
-
-                // Sort the fileList by last modified date in descending order (newest first)
-                // Parallel sorting using parallelStream
-                fileList = fileList.parallelStream()
-                        .sorted((file1, file2) -> {
-                            long time1 = Long.parseLong(file1.get("last_modified"));
-                            long time2 = Long.parseLong(file2.get("last_modified"));
-                            return Long.compare(time2, time1);  // Newer files first
-                        })
-                        .collect(Collectors.toCollection(ArrayList::new));
+            } catch (Exception e) {
+                Log.e("MainActivity", "Error in displayTxtFiles", e);
+                isLoading = false;
             }
+        });
+    }
+
+    private void updateFileListUI(ArrayList<HashMap<String, String>> fileList) {
+        if (isFinishing() || isDestroyed()) {
+            return;
         }
 
         if (fileList.isEmpty()) {
             statusTextView.setVisibility(View.VISIBLE);
-            // statusTextView.setText("No TXT files found in the selected directory.");
         } else {
             statusTextView.setVisibility(View.GONE);
         }
 
-        // Update SimpleAdapter to handle both file_name and file_content
-        SimpleAdapter adapter = new SimpleAdapter(this, fileList,
-                android.R.layout.simple_list_item_2,
-                new String[]{"file_name", "file_content"},
-                new int[]{android.R.id.text1, android.R.id.text2});
-        fileListView.setAdapter(adapter);
+        // Create and set the custom card adapter
+        if (fileCardAdapter == null) {
+            fileCardAdapter = new FileCardAdapter(this, fileList);
+            fileListView.setAdapter(fileCardAdapter);
+        } else {
+            fileCardAdapter.updateData(fileList);
+        }
+    }
+
+    private void loadFilePreviewsAsync(ArrayList<HashMap<String, String>> fileList, ArrayList<DocumentFile> txtFiles) {
+        if (backgroundExecutor == null || backgroundExecutor.isShutdown()) {
+            return;
+        }
+
+        backgroundExecutor.execute(() -> {
+            try {
+                final int BATCH_SIZE = 3; // Reduced batch size for better performance
+                for (int i = 0; i < fileList.size() && i < txtFiles.size(); i += BATCH_SIZE) {
+                    // Check if we should continue
+                    if (isFinishing() || isDestroyed()) {
+                        break;
+                    }
+
+                    final int startIndex = i;
+                    final int endIndex = Math.min(i + BATCH_SIZE, fileList.size());
+
+                    // Process a batch of files
+                    for (int j = startIndex; j < endIndex; j++) {
+                        if (j >= fileList.size() || j >= txtFiles.size()) break;
+
+                        HashMap<String, String> fileMap = fileList.get(j);
+                        DocumentFile file = txtFiles.get(j);
+
+                        String preview = getFirstCharactersFromFile(file, PreviewFirstCharactersFromFile); // Further reduced preview size
+                        fileMap.put("file_content", preview);
+                    }
+
+                    // Update UI after each batch instead of each file
+                    if (!isFinishing() && !isDestroyed()) {
+                        mainHandler.post(() -> {
+                            try {
+                                if (fileCardAdapter != null && !isFinishing() && !isDestroyed()) {
+                                    fileCardAdapter.notifyDataSetChanged();
+                                }
+                            } catch (Exception e) {
+                                Log.e("MainActivity", "Error updating adapter", e);
+                            }
+                        });
+                    }
+
+                    // Longer delay between batches to prevent overwhelming
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        break;
+                    }
+                }
+            } catch (Exception e) {
+                Log.e("MainActivity", "Error in loadFilePreviewsAsync", e);
+            }
+        });
     }
 
     private String getFirstCharactersFromFile(DocumentFile file, int n) {
         StringBuilder contentBuilder = new StringBuilder();
         try {
             InputStream inputStream = getContentResolver().openInputStream(file.getUri());
+            if (inputStream == null) {
+                return "Error reading file";
+            }
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            // Create a char array to hold up to the first `n` characters
             char[] buffer = new char[n];
-
-            // Read up to `n` characters into the buffer
             int charsRead = reader.read(buffer, 0, n);
 
-            // Append the characters to the StringBuilder
             if (charsRead != -1) {
                 contentBuilder.append(buffer, 0, charsRead);
             }
 
             reader.close();
+            inputStream.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("MainActivity", "Error reading file: " + file.getName(), e);
             return "Error reading file";
         }
 
-        return contentBuilder.toString().trim(); // Remove any trailing whitespace
+        return contentBuilder.toString().trim();
     }
 
-    // Method to read the first `n` lines from a TXT file
     private String getFirstLinesFromFile(DocumentFile file, int n) {
         StringBuilder contentBuilder = new StringBuilder();
         try {
             InputStream inputStream = getContentResolver().openInputStream(file.getUri());
+            if (inputStream == null) {
+                return "Error reading file";
+            }
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
             String line;
@@ -306,26 +446,24 @@ public class MainActivity extends AppCompatActivity {
                 lineCount++;
             }
             reader.close();
+            inputStream.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("MainActivity", "Error reading file: " + file.getName(), e);
             return "Error reading file";
         }
-        return contentBuilder.toString().trim(); // Remove trailing newline
+        return contentBuilder.toString().trim();
     }
 
     private void createNewFile() {
         if (selectedFolderUri != null) {
             DocumentFile directory = DocumentFile.fromTreeUri(this, selectedFolderUri);
             if (directory != null && directory.isDirectory()) {
-                // Generate the current timestamp for the file name
                 String timeStamp = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(new Date());
                 String fileName = timeStamp + ".txt";
 
-                // Create the new file in the selected directory
                 DocumentFile newFile = directory.createFile("text/plain", fileName);
 
                 if (newFile != null) {
-                    // Open EditActivity to edit the new file
                     Intent intent = new Intent(MainActivity.this, EditActivity.class);
                     intent.putExtra("file_name", newFile.getName());
                     intent.putExtra("folder_uri", selectedFolderUri.toString());
