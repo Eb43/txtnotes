@@ -1,82 +1,98 @@
-<h1>TXTnotes - offline free Android app saves notes locally in .TXT files and supports microSD</h1>
-<img alt="android txt notes microsd app logo icon" style="margin-left: 0 !important; width: auto; height: 130px;" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/TXTNotes/TXTNotes_icon.png" style="width:130px;"/>
-<p>Download the app installation APK file: 
-<a href="https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk">https://github.com/Eb43/txtnotes/blob/main/TXTNotes.apk</a></p>
-<div>
-<img alt="android notes in txt files in user selected folder on microsd" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/download.jpg" style="width:700px; display: inline-block; margin-left:30px;"/>
-</div>
+<h1 align="center">📝 TeXeTeScribe</h1>
+<p align="center"><b>Offline Android app that saves notes locally as .TXT files - supports external microSD storage</b></p>
 
-<br>
+<p align="center">
+  <img alt="TXTNotes app icon" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/TXTNotes/TXTNotes_icon.png" width="130">
+</p>
 
-<p>Make Android notes in tXT files and save them anywhere, including external microSD card. Transfer Android notes in a standard TXT format supported by Windows, MacOS, Linux, ChromeOS, Android, iOS. </p>
+<p align="center">
+    📦 Download APK: 
+  <a href="https://github.com/Eb43/txtnotes/releases/latest">https://github.com/Eb43/txtnotes/releases/latest</a>
+</p>
 
+---
+### 🗒️ Overview
 
-<div>
-<img alt="android notes in txt files in user selected folder on microsd" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-55-00-835_com.txtnotes.jpg" style="width:300px; display: inline-block; margin-left:30px;"/>
-<img alt="android notes in txt files in user selected folder on microsd" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-09-36-947_com.txtnotes.jpg" style="width:300px; display: inline-block; margin-left:30px;"/>
-</div>
-<div>
-<img alt="android notes in txt files in user selected folder on microsd" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-08-766_com.txtnotes.jpg" style="width:300px; display: inline-block; margin-left:30px;"/>
-<img alt="android notes in txt files in user selected folder on microsd" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-25-050_com.txtnotes.jpg" style="width:300px; display: inline-block; margin-left:30px;"/>
-</div>
-<div>
-<img alt="android notes in txt files in user selected folder on microsd" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-30-928_com.txtnotes.jpg" style="width:300px; display: inline-block; margin-left:30px;"/>
-<img alt="android notes in TXT on microSD" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-04-22-495_com.ghisler.android.TotalCommander.jpg" style="width:300px;  display: inline-block; margin-left:30px;"/>
-</div>
+**TeXeTeScribe** provides what Android still lacks - the ability to read, edit, and create text-based files directly in folders you choose, including on **microSD cards**.  
+It is a free, offline note editor designed around plain `.TXT` files for maximum compatibility, privacy, and reliability.
 
-<p>TXTNotes is a lightweight and functional note-taking application for Android that stores notes as <strong>.TXT files</strong>. The app provides a straightforward approach to creating, viewing, and editing text files without reliance on cloud services or proprietary formats.</p>
+<p align="center">
+  <img alt="TeXeTeScribe main screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-55-00-835_com.txtnotes.jpg" width="300">
+  <img alt="TeXeTeScribe edit screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-09-36-947_com.txtnotes.jpg" width="300">
+</p>
 
-<h2>Features</h2>
-<ul>
-<li><strong>Standard TXT Format:</strong> Notes are saved as <strong>.TXT files</strong>, ensuring compatibility with Windows, macOS, Linux, ChromeOS, Android, and iOS.</li>
-<li><strong>Flexible Storage Options:</strong> Users can select a folder for saving notes, including external microSD cards, using Android’s native file access framework.</li>
-<li><strong>File Management:</strong> The app can read and edit existing TXT files within the selected directory.</li>
-<li><strong>Automated Sorting:</strong> Files are automatically arranged by last modified date for easy access.</li>
-<li><strong>Automated Save Function:</strong> Notes are automatically saved upon app exit or minimization to prevent data loss.</li>
-<li><strong>Simple File Naming:</strong> Newly created files follow a structured naming format (<em>DayMonthYearHourMinuteSecond.TXT</em>) for clear identification.</li>
-<li><strong>Content Preview:</strong> Each file is displayed with a preview of its first several hundred characters for quick reference.</li>
-<li><strong>Minimal System Requirements:</strong> Designed for efficiency, the app avoids unnecessary animations and background processes.</li>
-<li><strong>Privacy-Focused:</strong> The app operates entirely offline, does not track user activity, and does not contain advertisements or require Google Play Services.</li>
-<li><strong>Free and Open-Source:</strong> TXTNotes is available at no cost, without in-app purchases or account registration requirements.</li>
-<li><strong>Compact Installation:</strong> The APK file size is <strong>6.5 MB</strong>, ensuring minimal resource usage.</li>
-<li><strong>Compatibility:</strong> Supports Android versions starting from Android 8.</li>
-</ul>
+---
 
-<h2>Usage</h2>
-<p>The app interface is designed for simplicity:</p>
-<ul>
-<li>Select the <strong>+</strong> button to create a new note.</li>
-<li>Use the <strong>refresh</strong> button to update the file list based on changes in the selected folder.</li>
-<li>Tap a file to open and edit its contents.</li>
-<li>Press the <strong>X</strong> button to exit the editing screen.</li>
-</ul>
+### 💡 Why TeXeTeScribe
 
-<h2>Additional Information</h2>
-<p>TXTNotes provides a practical solution for users who prefer working with standard TXT files and managing them locally. It is a suitable option for those who prioritize offline access, direct control over file storage, and cross-platform compatibility.</p>
+- **Your data is always readable**. Storing notes in plain `.TXT` format makes them viewable and editable on any device - Android, iOS, Windows, macOS, Linux, ChromeOS, Smart TVs, e-readers, and cloud drives. Every system understands text.  
 
-<p>For further details, visit the official application page: <a href="https://github.com/Eb43/txtnotes/blob/main/README.md" target="_blank">TXTNotes Official Page</a></p>
+- **Your notes survive Android failures**. When Android glitches, encrypts, or bricks itself after an update, files in internal storage become unreadable. Saving notes on a microSD card keeps them visible and copyable in any file manager, even if the phone is dead or replaced.  
 
-<br>
-<ul>
-  <li>Stores your notes in .TXT files. One note - one file.</li>
-  <li>Saves files in user-specified folder. One folder - one set of notes.</li>
-  <li>Supports saving on microSD card using native Android file access framework.</li>
-  <li>Automatically sorts the list of files within the folder by last modified date.</li>
-  <li>Prevents unsaved note loss with automated save on exit or app minimization.</li>
-  <li>No hidden metadata and databases that are inaccessible to users. Only TXT files with filenames in the format of file creation date.</li>
-  <li>Displays a snippet of TXT file content for easy and quick content preview.</li>
-  <li>No tracking, no ads, no Google Play Services, fully offline.</li>
-  <li>Free to use. No in-app purchases, no limitations, no accounts.</li>
-  <li>Minimal system requirements. No animations, no background services.</li>
-  <li>Only 6.5 MB of APK installer file.</li>
-  <li>Supports modern Android versions starting from Android 8.</li>
-  <li>Open source code.</li>
-</ul>
+- **Your text always displays correctly**. The app detects file encoding automatically - whether UTF-8 (Android), ANSI-1251 (Windows), CP-866 (DOS), MacRoman (macOS), or UTF-32. Most Android apps ignore encodings and show gibberish; TeXeTeScribe ensures text looks right.  
 
+- **You find notes instantly**. The folder view shows a preview of each file and its modification time, helping you locate the right note without opening them one by one.  
 
-<div>
-</div>
-<hr>
-<br>
+- **You always return to your latest thoughts**. Files are sorted by last modification time, so your most recent ideas appear on top - exactly how note-taking works in real life.  
 
+- **You stay offline and private**. No cloud sync, no analytics, no background tasks. Everything stays on your device, in your folders.  
 
+- **You control storage**. Create, rename, and manage notes directly inside user-selected folders using Android’s built-in file access system.  
+
+- **You work with any text-based file**. Beyond TXT, it opens and edits MD, LOG, INI, CFG, YAML, JSON, XML, CSV, and more.  
+
+- **You never lose progress**. Notes are automatically saved on exit or app minimization, preventing accidental data loss.  
+
+- **You own your data**. No accounts, ads, or hidden databases. Every note is a transparent text file you can move, back up, or open anywhere.
+
+<p align="center">
+  <img alt="TeXeTeScribe folder preview" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-56-08-766_com.txtnotes.jpg" width="300">
+  <img alt="TeXeTeScribe SD card view" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-04-22-495_com.ghisler.android.TotalCommander.jpg" width="300">
+</p>
+
+---
+
+### ⚙️ Features
+
+- Save notes as **.TXT** files  
+- Choose any folder - including **microSD**  
+- Automatic **encoding detection and display**  
+- File list with **previews and modification times**  
+- Sort by **last modified** date  
+- **Auto-save** on exit or minimize  
+- **No databases**, just plain text files  
+- **Offline and private** operation  
+- **Lightweight:** 6.5 MB APK  
+- Works on **Android 8.0 and newer**  
+- **Open source** and completely free  
+
+---
+
+### 📱 How to Use
+
+1. Tap **➕** to create a new note.  
+2. Tap a file to open and edit it.  
+3. Tap **Refresh** to reload folder contents.  
+4. Tap **X** to close the editor - the note saves automatically.  
+5. Use **Select Folder** to switch where your notes are stored.
+
+---
+
+### 🔐 Privacy & Design Philosophy
+
+TeXeTeScribe never leaves your storage.  
+No telemetry, no background services, no cloud connections.  
+Every note remains a readable `.TXT` file in a location you control.  
+What you write stays fully under your ownership.
+
+---
+
+### 🧩 Technical Details
+
+- **App name:** TeXeTeScribe  
+- **APK size:** 6.5 MB  
+- **Minimum Android:** 8.0 (Oreo)  
+- **Permissions:** Storage access (read/write to selected folders)  
+- **License:** Open Source (see repository)  
+
+---
