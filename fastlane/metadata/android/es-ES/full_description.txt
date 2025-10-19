@@ -1,0 +1,34 @@
+TeXeTeScribe ofrece lo que falta en Android por defecto: leer y editar archivos de texto. También implementa el concepto de carpeta con funcionalidad de cuaderno de notas.
+
+   📖 Tus datos siempre son legibles. 
+   Si una plataforma puede mostrar caracteres, puede manejar un archivo TXT: Android, iOS, Windows, Linux, macOS, Smart TV, lectores electrónicos, consolas, dispositivos integrados e IoT, almacenamiento en la nube y herramientas de colaboración (Google Drive, iCloud, Dropbox, etc.). Los archivos TXT son el formato más universal porque todos los sistemas operativos los “entienden”. Los archivos de texto evitan los problemas de compatibilidad de los formatos propietarios y garantizan una transferencia perfecta entre dispositivos y plataformas.
+
+   🛡 Asegura tu contenido para el futuro. 
+   Los archivos de texto son universales y a prueba del tiempo, libres de los problemas de compatibilidad que afectan a los formatos de notas propietarios. No necesitas una aplicación específica para abrir un archivo TXT: puede verse y editarse prácticamente en cualquier dispositivo con procesador.
+
+   🔓 Las notas en archivos TXT nunca quedan atrapadas. 
+   La mayoría de las aplicaciones de notas almacenan datos dentro de bases privadas o formatos en la nube cerrados. Si la aplicación deja de funcionar por una mala actualización o un error, o desaparece de la tienda, tus notas suelen perderse con ella: ilegibles, sin posibilidad de exportación y bloqueadas en una copia de seguridad inaccesible. Los archivos .txt simples evitan por completo esa situación.
+
+   💾 Las notas sobreviven a fallos del teléfono. 
+   Cuando los datos se almacenan en la memoria interna, Android los cifra por defecto desde 2015. Si el sistema falla tras una actualización o el teléfono no puede ejecutar su sistema operativo, todos los datos internos se vuelven inaccesibles y, en la práctica, se pierden, ya que el proceso de reparación de Android normalmente implica borrar todo. Guardar las notas en una tarjeta microSD las mantiene físicamente separadas del sistema. Solo hay que insertar la tarjeta en otro dispositivo: los archivos permanecen completamente accesibles desde cualquier gestor de archivos.
+
+   🔠 El texto siempre se muestra correctamente. 
+   Cada archivo de texto tiene su propia codificación. Android usa UTF-8 por defecto, Windows a menudo guarda el texto en ANSI (Windows-1251), los programas antiguos de DOS usan CP866 y los sistemas clásicos de macOS empleaban MacRoman. También existe UTF-32, usado en ciertos archivos técnicos. La mayoría de las aplicaciones de Android simplemente asumen que todo está en UTF-8, por lo que los documentos antiguos o los textos en otros idiomas aparecen como símbolos ilegibles. La aplicación TeXeTeScribe detecta automáticamente la codificación correcta y muestra el texto de forma legible.
+
+   👁 Mira lo que hay dentro antes de abrir. 
+   La aplicación muestra la lista de archivos con más que solo sus nombres: ofrece una vista previa del contenido y la hora de modificación. Así puedes reconocer de inmediato qué nota o documento necesitas sin abrirlos uno por uno.
+
+   💡 Tus ideas más recientes siempre están arriba. 
+   Las aplicaciones de notas comunes mezclan tus notas alfabéticamente o por título, haciendo que las ideas recientes se pierdan. TeXeTeScribe refleja cómo realmente funciona el proceso de tomar notas: lo último que escribiste es lo que probablemente seguirás desarrollando. Las notas modificadas más recientemente permanecen en la parte superior, para que puedas seguir escribiendo o revisando sin buscarlas.
+
+   🛠 Abre casi cualquier archivo basado en texto. 
+   TeXeTeScribe reconoce y edita muchos formatos comunes: .txt, .md, .json, .xml, .csv, .html, .log, .yaml, .cfg y más. Ahorra tiempo cuando solo necesitas leer o corregir un archivo sin buscar otra herramienta.
+
+   🛰 Funciona sin conexión para siempre. 
+   Como todo se guarda localmente, la aplicación no necesita conexión. Tus notas, archivos de configuración y registros están siempre disponibles, incluso en aviones o en zonas sin cobertura.
+
+
+
+TeXeTeScribe te permite crear, leer y editar notas de texto que siguen siendo totalmente accesibles y compatibles en cualquier dispositivo. Tus datos permanecen seguros y nunca quedan atrapados en formatos o aplicaciones propietarias.
+
+Creado por Eugen Barilyuk EB43 https://eb43.github.io

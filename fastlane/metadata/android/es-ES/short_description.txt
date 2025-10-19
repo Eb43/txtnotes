@@ -1,0 +1,1 @@
+Lee y escribe archivos de texto: TXT, JSON, HTML, CSV, XML, YAML, INI, MD
