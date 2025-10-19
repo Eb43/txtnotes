@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="File Name"
+            android:text="@string/file_name"
             android:textColor="#000"
             android:textSize="18sp" />
 
@@ -43,7 +43,7 @@
         android:background="#B5E7FD"
         android:includeFontPadding="false"
         android:paddingStart="10dp"
-        android:text="Encoding: Failed to detect"
+        android:text="@string/encoding_failed"
         android:textColor="#555555"
         android:textSize="14sp" />
 
@@ -56,7 +56,7 @@
         android:gravity="top"
         android:padding="16dp"
         android:textSize="16sp"
-        android:hint="✎ Edit file content here... "
+        android:hint="@string/edit_hint"
         android:layout_marginBottom="16dp"
         android:inputType="textMultiLine"
         android:scrollbars="vertical"
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:text="EXIT"
+            android:text="@string/exit"
             android:contentDescription="Exit"
             android:textSize="30sp"
             android:textAlignment="center"

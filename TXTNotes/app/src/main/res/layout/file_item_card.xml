@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
-                android:text="📄"
+                android:text="@string/file_icon"
                 android:textSize="16sp" />
 
             <TextView
@@ -43,7 +43,7 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="filename.txt"
+                android:text="@string/filename_placeholder"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -59,7 +59,7 @@
             android:ellipsize="end"
             android:maxLines="10"
             android:padding="6dp"
-            android:text="File preview content..."
+            android:text="@string/file_preview_placeholder"
             android:textColor="#666666"
             android:textSize="13sp" />
 
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:text="Encoding"
+                android:text="@string/encoding_placeholder"
                 android:textColor="#555555"
                 android:textSize="11sp" />
 
@@ -92,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="Last modified: --"
+                android:text="@string/last_modified_placeholder"
                 android:textColor="#999999"
                 android:textSize="11sp" />
         </LinearLayout>

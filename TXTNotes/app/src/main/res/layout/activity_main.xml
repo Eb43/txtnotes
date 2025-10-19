@@ -26,7 +26,7 @@
                 android:id="@+id/appTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="WriteInTXT"
+                android:text="@string/app_name"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
@@ -43,7 +43,7 @@
                 android:id="@+id/appSubtitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="by Eugen Barilyuk EB43.GITHUB.IO"
+                android:text="@string/app_subtitle"
                 android:textColor="#555555"
                 android:textSize="12sp"
                 android:gravity="center" />
@@ -76,7 +76,7 @@
             android:shadowDx="7"
             android:shadowDy="7"
             android:shadowRadius="4"
-            android:text="📁"
+            android:text="📂"
             android:textSize="42dp" />
 
     </LinearLayout>
@@ -101,20 +101,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Directory path"
+            android:text="@string/directory_path"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="normal" />
     </LinearLayout>
 
-        <TextView
+    <TextView
         android:id="@+id/statusTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="⦻ \n The selected directory contains no TXT files. \n
-\n В выбранной папке отсутствуют TXT файлы."
+        android:text="@string/no_txt_files"
         android:visibility="gone"
         android:gravity="center"
         android:textSize="42dp"/>
@@ -143,11 +142,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_margin="8dp"
-            android:contentDescription="Rescan files in folder"
+            android:contentDescription="@string/rescan_files"
             android:src="@android:drawable/ic_popup_sync"
             android:tint="@android:color/white"
             android:backgroundTint="@android:color/holo_blue_light"
-             />
+            />
 
         <!-- Spacer to push to the right -->
         <View
@@ -173,7 +172,7 @@
             android:layout_height="1dp"
             android:layout_weight="5" />
 
-    <!-- Floating Action Button for creating a new TXT file -->
+        <!-- Floating Action Button for creating a new TXT file -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/newFileButton"
             android:layout_width="wrap_content"
@@ -182,7 +181,7 @@
             android:layout_margin="16dp"
             android:layout_weight="1"
             android:backgroundTint="#B5E7FD"
-            android:contentDescription="Create new TXT file"
+            android:contentDescription="@string/create_new_txt"
             android:src="@android:drawable/ic_input_add"
             android:tint="@android:color/white" />
     </LinearLayout>
