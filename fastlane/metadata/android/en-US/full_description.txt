@@ -1,6 +1,6 @@
 TeXeTeScribe provides what default Android lacks: read and edit text-based files. It also implements concept of a folder with a notebook functionality.
 
-📖 You data is always readable. If a platform can display characters, it can handle a TXT file: Android, iOS, Windows, Linux, macOS, Smart TVs, e-readers, and consoles, embedded and IoT devices, cloud storage and collaboration tools (Google Drive, iCloud, Dropbox, etc). TXT files are the most universal format because every operating system "understands" them. Text files avoid compatibility issues of proprietary formats, ensuring flawless transfer across devices and platforms.
+📖 You data is always readable. If a platform can display characters, it can handle a TXT file: Android, iOS, Windows, Linux, macOS, ChromeOS, Smart TVs, e-readers, gaming consoles, embedded and IoT devices, cloud storage and collaboration tools (Google Drive, iCloud, Dropbox, etc). TXT files are the most universal format because every operating system "understands" them. Text files avoid compatibility issues of proprietary formats, ensuring flawless transfer across devices and platforms.
 
 🛡 Future proof your content. Text files are universal and future-proof, free from the compatibility problems that plague proprietary note formats. You don't need a specific app to access TXT file. It can be viewed and edited on basically everything with a processor.
 

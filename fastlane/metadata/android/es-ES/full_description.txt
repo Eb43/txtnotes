@@ -1,7 +1,7 @@
 TeXeTeScribe ofrece lo que falta en Android por defecto: leer y editar archivos de texto. También implementa el concepto de carpeta con funcionalidad de cuaderno de notas.
 
    📖 Tus datos siempre son legibles. 
-   Si una plataforma puede mostrar caracteres, puede manejar un archivo TXT: Android, iOS, Windows, Linux, macOS, Smart TV, lectores electrónicos, consolas, dispositivos integrados e IoT, almacenamiento en la nube y herramientas de colaboración (Google Drive, iCloud, Dropbox, etc.). Los archivos TXT son el formato más universal porque todos los sistemas operativos los “entienden”. Los archivos de texto evitan los problemas de compatibilidad de los formatos propietarios y garantizan una transferencia perfecta entre dispositivos y plataformas.
+   Si una plataforma puede mostrar caracteres, puede manejar un archivo TXT: Android, iOS, Windows, Linux, macOS, ChromeOS, Smart TV, lectores electrónicos, consolas, dispositivos integrados e IoT, almacenamiento en la nube y herramientas de colaboración (Google Drive, iCloud, Dropbox, etc.). Los archivos TXT son el formato más universal porque todos los sistemas operativos los “entienden”. Los archivos de texto evitan los problemas de compatibilidad de los formatos propietarios y garantizan una transferencia perfecta entre dispositivos y plataformas.
 
    🛡 Asegura tu contenido para el futuro. 
    Los archivos de texto son universales y a prueba del tiempo, libres de los problemas de compatibilidad que afectan a los formatos de notas propietarios. No necesitas una aplicación específica para abrir un archivo TXT: puede verse y editarse prácticamente en cualquier dispositivo con procesador.
