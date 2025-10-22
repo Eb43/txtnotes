@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "barilyuk.writeintxt"
+    namespace = "barilyuk.texetescribe"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "barilyuk.writeintxt"
+        applicationId = "barilyuk.texetescribe"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
