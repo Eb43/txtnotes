@@ -7,6 +7,12 @@
 
 <p align="center">
     📦 Download APK: 
+  
+<a href="https://f-droid.org/ru/packages/barilyuk.texetescribe/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get TeXeTeScribe on F-Droid"
+     height="80"></a>
+  
+  <p>or in Releases section of this repository:</p>
   <a href="https://github.com/Eb43/txtnotes/releases/latest">https://github.com/Eb43/txtnotes/releases/latest</a>
 </p>
 
