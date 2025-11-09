@@ -1,1 +1,3 @@
-Fix file opening issue through the “Open with” dialog
+V1.1 changes:
+
+• Fix file opening issue through the “Open with” dialog
