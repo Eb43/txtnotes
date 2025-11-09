@@ -186,10 +186,31 @@ public class EditActivity extends AppCompatActivity {
         DocumentFile file = null;
 
         try {
-            if (uri != null && "content".equals(uri.getScheme())) {
-                file = DocumentFile.fromSingleUri(this, uri);
-            } else if (uri != null && "file".equals(uri.getScheme())) {
+            if (uri != null && "file".equals(uri.getScheme())) {
                 filePath = new java.io.File(uri.getPath());
+            } else if (uri != null && "content".equals(uri.getScheme())) {
+                // Try reading directly for "Open with" URIs
+                InputStream directStream = getContentResolver().openInputStream(uri);
+                if (directStream != null) {
+                    byte[] buf = new byte[4096];
+                    int nread = directStream.read(buf);
+                    String encoding = detectEncodingWithFallback(java.util.Arrays.copyOf(buf, Math.max(0, nread)));
+                    directStream.close();
+
+                    TextView encodingTextView = findViewById(R.id.fileEncodingTextView);
+                    encodingTextView.setText(getString(R.string.encoding_label, encoding));
+
+                    InputStream directStream2 = getContentResolver().openInputStream(uri);
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(directStream2, encoding));
+                    StringBuilder content = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        content.append(line).append("\n");
+                    }
+                    reader.close();
+                    editText.setText(content.toString().trim());
+                    return;
+                }
             } else {
                 DocumentFile directory = DocumentFile.fromTreeUri(this, folderUri);
                 if (directory != null) file = directory.findFile(fileName);
@@ -197,33 +218,21 @@ public class EditActivity extends AppCompatActivity {
 
             if ((file != null && file.isFile()) || (filePath != null && filePath.isFile())) {
                 String encoding = "UTF-8";
-
                 InputStream inputStream;
-                if (file != null) {
-                    inputStream = getContentResolver().openInputStream(file.getUri());
-                } else {
-                    inputStream = new java.io.FileInputStream(filePath);
-                }
+                if (file != null) inputStream = getContentResolver().openInputStream(file.getUri());
+                else inputStream = new java.io.FileInputStream(filePath);
 
-                // detect encoding
-                UniversalDetector detector = new UniversalDetector(null);
                 byte[] buf = new byte[4096];
                 int nread = inputStream.read(buf);
-                if (nread > 0) {
-                    byte[] sample = java.util.Arrays.copyOf(buf, nread);
-                    encoding = detectEncodingWithFallback(sample);
-                }
+                if (nread > 0) encoding = detectEncodingWithFallback(java.util.Arrays.copyOf(buf, nread));
                 inputStream.close();
 
                 TextView encodingTextView = findViewById(R.id.fileEncodingTextView);
                 encodingTextView.setText(getString(R.string.encoding_label, encoding));
 
                 InputStream inputStream2;
-                if (file != null) {
-                    inputStream2 = getContentResolver().openInputStream(file.getUri());
-                } else {
-                    inputStream2 = new java.io.FileInputStream(filePath);
-                }
+                if (file != null) inputStream2 = getContentResolver().openInputStream(file.getUri());
+                else inputStream2 = new java.io.FileInputStream(filePath);
 
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream2, encoding));
                 StringBuilder content = new StringBuilder();
@@ -252,21 +261,21 @@ public class EditActivity extends AppCompatActivity {
         DocumentFile file = null;
 
         try {
+            OutputStream outputStream = null;
+
             if (uri != null && "content".equals(uri.getScheme())) {
-                file = DocumentFile.fromSingleUri(this, uri);
+                // Handles "Open with" and SAF documents
+                outputStream = getContentResolver().openOutputStream(uri, "wt");
             } else if (uri != null && "file".equals(uri.getScheme())) {
                 filePath = new java.io.File(uri.getPath());
+                outputStream = new java.io.FileOutputStream(filePath, false);
             } else {
                 DocumentFile directory = DocumentFile.fromTreeUri(this, folderUri);
                 if (directory != null) file = directory.findFile(fileName);
+                if (file != null) outputStream = getContentResolver().openOutputStream(file.getUri(), "wt");
             }
 
-            OutputStream outputStream;
-            if (file != null) {
-                outputStream = getContentResolver().openOutputStream(file.getUri(), "wt");
-            } else if (filePath != null) {
-                outputStream = new java.io.FileOutputStream(filePath, false);
-            } else {
+            if (outputStream == null) {
                 Toast.makeText(this, R.string.file_not_found, Toast.LENGTH_SHORT).show();
                 return;
             }
