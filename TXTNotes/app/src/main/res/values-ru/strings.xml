@@ -39,6 +39,8 @@
     <string name="edit_hint">✎ Начните печатать содержимое файла здесь… </string>
     <string name="save">Сохранить</string>
     <string name="exit">ВЫХОД</string>
+    <string name="undo">ОТМЕНИТЬ</string>
+    <string name="redo">ВЕРНУТЬ</string>
     <string name="exit_without_saving">Выход без сохранения</string>
     <string name="unsaved_changes">У вас есть несохраненные изменения. Выйти без сохранения?</string>
     <string name="yes">Да</string>
@@ -54,6 +56,8 @@
     <string name="delete_confirmation">Вы уверены, что хотите удалить этот файл?</string>
     <string name="file_deleted">Файл удален</string>
     <string name="error_deleting_file">Ошибка удаления файла</string>
+    <string name="access_denied">Доступ к файлу запрещен</string>
+    <string name="android_blocked_file_access">Android блокирует доступ к этому файлу</string>
 
     <!-- File Item -->
     <string name="file_icon">📄</string>

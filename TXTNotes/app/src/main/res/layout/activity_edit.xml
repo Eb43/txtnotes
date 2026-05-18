@@ -71,24 +71,94 @@
         android:layout_height="wrap_content"
         android:background="#B5E7FD"
         android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:weightSum="3">
+        android:layout_alignParentBottom="true">
 
-        <ImageButton
-            android:id="@+id/saveButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Save"
-            android:src="@android:drawable/ic_menu_save"
-            android:tint="#403F3F" />
+            android:orientation="vertical"
+            android:gravity="center">
 
+            <ImageButton
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="Save"
+                android:src="@android:drawable/ic_menu_save"
+                android:tint="#403F3F" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:textSize="12sp"
+                android:textColor="#403F3F" />
+        </LinearLayout>
+
+        <!-- smaller divider -->
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:background="#FFFFFF" />
+
+        <!-- UNDO -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/undoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="Undo"
+                android:src="@android:drawable/ic_menu_revert"
+                android:tint="#403F3F" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/undo"
+                android:textSize="12sp"
+                android:textColor="#403F3F" />
+        </LinearLayout>
+
+        <!-- REDO -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/redoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="Redo"
+                android:src="@android:drawable/ic_menu_rotate"
+                android:tint="#403F3F" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/redo"
+                android:textSize="12sp"
+                android:textColor="#403F3F" />
+        </LinearLayout>
+
+        <!-- smaller divider -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
             android:background="#FFFFFF" />
 
         <Button
@@ -96,12 +166,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:background="?android:attr/selectableItemBackground"
-            android:text="@string/exit"
             android:contentDescription="Exit"
-            android:textSize="30sp"
+            android:text="@string/exit"
             android:textAlignment="center"
             android:textColor="#8C8C8C"
+            android:textSize="30sp"
             android:textStyle="bold" />
     </LinearLayout>
 </RelativeLayout>

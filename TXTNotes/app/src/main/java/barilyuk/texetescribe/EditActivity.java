@@ -32,6 +32,7 @@ import android.view.View;
 
 import org.mozilla.universalchardet.UniversalDetector;
 
+
 public class EditActivity extends AppCompatActivity {
     private EditText editText;
     private Button cancelButton;
@@ -40,6 +41,11 @@ public class EditActivity extends AppCompatActivity {
     private String fileName;
     private Uri folderUri;
     private boolean isEdited = false;
+
+    private ImageButton undoButton;
+    private ImageButton redoButton;
+
+    private TextViewUndoRedo undoRedo;
 
     private static final int REQUEST_STORAGE_PERMISSION = 100;
 
@@ -72,6 +78,11 @@ public class EditActivity extends AppCompatActivity {
         cancelButton = findViewById(R.id.cancelButton);
         deleteButton = findViewById(R.id.deleteButton);
         TextView fileNameTextView = findViewById(R.id.fileNameTextView);
+
+        undoButton = findViewById(R.id.undoButton);
+        redoButton = findViewById(R.id.redoButton);
+
+        undoRedo = new TextViewUndoRedo(editText);
 
         // Get file name and folder URI from the intent
         Intent intent = getIntent();
@@ -109,25 +120,35 @@ public class EditActivity extends AppCompatActivity {
 
         // Load the content of the selected file
         loadFileContent();
+        undoRedo.clearHistory();
 
         // Set text change listener to detect edits
         editText.addTextChangedListener(new TextWatcher() {
+
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
                 isEdited = true;
             }
 
             @Override
-            public void afterTextChanged(Editable s) { }
+            public void afterTextChanged(Editable s) {
+
+            }
         });
 
         editText.setVerticalScrollBarEnabled(true);
         editText.setScrollContainer(true);
 
         saveButton.setOnClickListener(v -> saveFileContent());
+
+        undoButton.setOnClickListener(v -> undoRedo.undo());
+        redoButton.setOnClickListener(v -> undoRedo.redo());
 
         //cancelButton.setOnClickListener(v -> finish()); // Exit without saving
         cancelButton.setOnClickListener(v -> {
@@ -208,7 +229,7 @@ public class EditActivity extends AppCompatActivity {
                         content.append(line).append("\n");
                     }
                     reader.close();
-                    editText.setText(content.toString().trim());
+                    editText.setText(content.toString());
                     return;
                 }
             } else {
@@ -241,7 +262,7 @@ public class EditActivity extends AppCompatActivity {
                     content.append(line).append("\n");
                 }
                 reader.close();
-                editText.setText(content.toString().trim());
+                editText.setText(content.toString());
             }
 
         } catch (Exception e) {

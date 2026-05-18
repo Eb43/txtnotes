@@ -39,6 +39,8 @@
     <string name="edit_hint">✎ Editar contenido del archivo aquí… </string>
     <string name="save">Guardar</string>
     <string name="exit">SALIR</string>
+    <string name="undo">DESHACER</string>
+    <string name="redo">REHACER</string>
     <string name="exit_without_saving">Salir sin guardar</string>
     <string name="unsaved_changes">Tiene cambios sin guardar. ¿Salir sin guardar?</string>
     <string name="yes">Sí</string>
@@ -54,6 +56,8 @@
     <string name="delete_confirmation">¿Está seguro de que desea eliminar este archivo?</string>
     <string name="file_deleted">Archivo eliminado</string>
     <string name="error_deleting_file">Error al eliminar el archivo</string>
+    <string name="access_denied">Acceso al archivo denegado</string>
+    <string name="android_blocked_file_access">Android bloquea el acceso a este archivo</string>
 
     <!-- File Item -->
     <string name="file_icon">📄</string>
