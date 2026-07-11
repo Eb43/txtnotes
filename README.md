@@ -22,6 +22,11 @@
 It is a free, offline note editor designed around plain `.TXT` files for maximum compatibility, privacy, and reliability.
 
 <p align="center">
+  <img alt="TeXeTeScribe main screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg" width="300">
+  <img alt="TeXeTeScribe edit screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/fastlane/metadata/android/en-US/images/phoneScreenshots/11.jpg" width="300">
+</p>
+
+<p align="center">
   <img alt="TeXeTeScribe main screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-22-55-00-835_com.txtnotes.jpg" width="300">
   <img alt="TeXeTeScribe edit screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/screenshots/Screenshot_2024-09-26-23-09-36-947_com.txtnotes.jpg" width="300">
 </p>
