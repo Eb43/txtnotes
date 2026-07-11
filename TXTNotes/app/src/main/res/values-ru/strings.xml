@@ -66,4 +66,5 @@
     <string name="encoding_placeholder">Кодировка</string>
     <string name="last_modified_placeholder">Последнее изменение: --</string>
     <string name="loading">Загрузка…</string>
+    <string name="fileRenameButonTextString">Переименовать файл</string>
 </resources>

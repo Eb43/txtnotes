@@ -32,18 +32,24 @@ import android.view.View;
 
 import org.mozilla.universalchardet.UniversalDetector;
 
+import android.text.InputType;
+import android.view.textclassifier.TextClassifier;
+
 
 public class EditActivity extends AppCompatActivity {
     private EditText editText;
     private Button cancelButton;
     private ImageButton saveButton;
     private ImageView deleteButton;
+    private View renameButton;
+    private TextView fileNameTextView;
     private String fileName;
     private Uri folderUri;
     private boolean isEdited = false;
 
     private ImageButton undoButton;
     private ImageButton redoButton;
+
 
     private TextViewUndoRedo undoRedo;
 
@@ -74,13 +80,26 @@ public class EditActivity extends AppCompatActivity {
 
 
         editText = findViewById(R.id.editText);
+        // Large-file performance: stop framework subsystems from re-scanning
+        // the entire buffer on every keystroke, regardless of edit size.
+        editText.setTextClassifier(TextClassifier.NO_OP);
+        editText.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);
+        editText.setInputType(
+                android.text.InputType.TYPE_CLASS_TEXT |
+                        //android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE |
+                        android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
+        );
+        editText.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        editText.setHorizontallyScrolling(true);
+
         saveButton = findViewById(R.id.saveButton);
         cancelButton = findViewById(R.id.cancelButton);
+        renameButton = findViewById(R.id.renameButton);
         deleteButton = findViewById(R.id.deleteButton);
-        TextView fileNameTextView = findViewById(R.id.fileNameTextView);
+        fileNameTextView = findViewById(R.id.fileNameTextView);
 
-        undoButton = findViewById(R.id.undoButton);
-        redoButton = findViewById(R.id.redoButton);
+        android.widget.LinearLayout undoLayout = findViewById(R.id.undoLayout);
+        android.widget.LinearLayout redoLayout = findViewById(R.id.redoLayout);
 
         undoRedo = new TextViewUndoRedo(editText);
 
@@ -138,6 +157,8 @@ public class EditActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                long now = System.nanoTime();
+                android.util.Log.d("EDITOR", "afterTextChanged " + now);
 
             }
         });
@@ -147,8 +168,8 @@ public class EditActivity extends AppCompatActivity {
 
         saveButton.setOnClickListener(v -> saveFileContent());
 
-        undoButton.setOnClickListener(v -> undoRedo.undo());
-        redoButton.setOnClickListener(v -> undoRedo.redo());
+        undoLayout.setOnClickListener(v -> undoRedo.undo());
+        redoLayout.setOnClickListener(v -> undoRedo.redo());
 
         //cancelButton.setOnClickListener(v -> finish()); // Exit without saving
         cancelButton.setOnClickListener(v -> {
@@ -167,6 +188,7 @@ public class EditActivity extends AppCompatActivity {
             }
         });
 
+        renameButton.setOnClickListener(v -> showRenameDialog());
         deleteButton.setOnClickListener(v -> showDeleteConfirmation());
     }
 
@@ -310,6 +332,91 @@ public class EditActivity extends AppCompatActivity {
             setResult(RESULT_OK);
         } catch (Exception e) {
             Toast.makeText(this, R.string.error_saving_file, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void showRenameDialog() {
+
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setText(fileName);
+        input.setSelection(fileName.length());
+
+        new AlertDialog.Builder(this)
+                .setTitle("Rename file")
+                .setView(input)
+                .setPositiveButton("Rename", (dialog, which) -> {
+
+                    String newName = input.getText().toString().trim();
+
+                    if (newName.isEmpty()) {
+                        Toast.makeText(this, "Invalid filename", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    renameFile(newName);
+
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    private void renameFile(String newName) {
+
+        Intent intent = getIntent();
+        Uri uri = intent.getData();
+
+        try {
+
+            boolean renamed = false;
+
+            if (uri != null && "content".equals(uri.getScheme())) {
+
+                DocumentFile file = DocumentFile.fromSingleUri(this, uri);
+
+                if (file != null) {
+                    renamed = file.renameTo(newName);
+                }
+
+            } else if (uri != null && "file".equals(uri.getScheme())) {
+
+                java.io.File oldFile = new java.io.File(uri.getPath());
+                java.io.File newFile = new java.io.File(oldFile.getParent(), newName);
+
+                renamed = oldFile.renameTo(newFile);
+
+            } else {
+
+                DocumentFile directory = DocumentFile.fromTreeUri(this, folderUri);
+
+                if (directory != null) {
+
+                    DocumentFile file = directory.findFile(fileName);
+
+                    if (file != null) {
+                        renamed = file.renameTo(newName);
+                    }
+                }
+            }
+
+            if (renamed) {
+
+                fileName = newName;
+                fileNameTextView.setText(newName);
+
+                Toast.makeText(this, "File renamed", Toast.LENGTH_SHORT).show();
+                setResult(RESULT_OK);
+
+            } else {
+
+                Toast.makeText(this, "Rename failed", Toast.LENGTH_SHORT).show();
+
+            }
+
+        } catch (Exception e) {
+
+            Toast.makeText(this, "Rename failed", Toast.LENGTH_SHORT).show();
+
         }
     }
 

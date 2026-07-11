@@ -33,6 +33,7 @@
 
     <!-- Edit Activity -->
     <string name="file_name">File Name</string>
+    <string name="fileRenameButonTextString">Rename file</string>
     <string name="delete">Delete</string>
     <string name="encoding_label">Charset: %s</string>
     <string name="encoding_failed">Encoding: Failed to detect</string>
