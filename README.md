@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-    📦 Download APK: </p>
+    📦 Get TeXeTeScribe installation file: </p>
   
 <p><a href="https://f-droid.org/ru/packages/barilyuk.texetescribe/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get TeXeTeScribe on F-Droid"
