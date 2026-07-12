@@ -86,11 +86,11 @@ public class EditActivity extends AppCompatActivity {
         editText.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);
         editText.setInputType(
                 android.text.InputType.TYPE_CLASS_TEXT |
-                        //android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE |
+                        android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE |
                         android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
         );
         editText.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        editText.setHorizontallyScrolling(true);
+        editText.setHorizontallyScrolling(false);
 
         saveButton = findViewById(R.id.saveButton);
         cancelButton = findViewById(R.id.cancelButton);
