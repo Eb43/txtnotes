@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Info -->
+    <string name="app_name">TeXeTeScribe</string>
+    <string name="app_subtitle">von Eugen Barilyuk EB43.GITHUB.IO</string>
+
+    <!-- Main Activity -->
+    <string name="directory_path">Ordnerpfad</string>
+    <string name="no_txt_files">⦻ \n Der ausgewählte Ordner enthält keine TXT-Dateien.</string>
+    <string name="rescan_files">Dateien im Ordner erneut scannen</string>
+    <string name="create_new_txt">Neue TXT-Datei erstellen</string>
+    <string name="rescanning_files">Dateien werden erneut gescannt…</string>
+    <string name="no_folder_selected">Kein Ordner ausgewählt.</string>
+    <string name="invalid_folder">Dies ist ein virtueller Ordner und kann nicht verwendet werden. Bitte wählen Sie einen echten Ordner wie „Dokumente“ oder einen selbst erstellten Ordner aus.</string>
+    <string name="folder_not_accessible">Der ausgewählte Ordner ist nicht zugänglich. Bitte wählen Sie einen anderen.</string>
+    <string name="cannot_persist_permission">Der Zugriff auf den Ordner konnte nicht dauerhaft gespeichert werden. Bitte wählen Sie ihn erneut aus.</string>
+    <string name="permission_denied">Berechtigung zum Lesen des externen Speichers verweigert.</string>
+    <string name="using_default_folder">Standardordner wird verwendet: %s</string>
+    <string name="unable_access_private">Auf den privaten App-Ordner konnte nicht zugegriffen werden.</string>
+    <string name="error_default_folder">Fehler beim Festlegen des Standardordners.</string>
+    <string name="select_folder_to_save">Bitte wählen Sie einen Ordner zum Speichern der Dateien aus.</string>
+    <string name="failed_create_directory">Ordner konnte nicht erstellt werden.</string>
+    <string name="failed_create_file">Datei konnte nicht erstellt werden.</string>
+    <string name="error_creating_file">Fehler beim Erstellen der Datei: %s</string>
+    <string name="invalid_folder_select_again">Ungültiger Ordner. Bitte wählen Sie ihn erneut aus.</string>
+    <string name="failed_create_file_in_folder">Datei konnte im Ordner nicht erstellt werden.</string>
+    <string name="error_reading_file">Fehler beim Lesen der Datei</string>
+    <string name="loading_preview">Vorschau wird geladen…</string>
+    <string name="error_reading_file_warning">⚠️ Fehler beim Lesen der Datei</string>
+    <string name="empty_file">📝 Leere Datei</string>
+    <string name="unknown_date">📅 Unbekanntes Datum</string>
+    <string name="date_format">📅 %s</string>
+
+    <!-- Edit Activity -->
+    <string name="file_name">Dateiname</string>
+    <string name="fileRenameButonTextString">Datei umbenennen</string>
+    <string name="delete">Löschen</string>
+    <string name="encoding_label">Zeichensatz: %s</string>
+    <string name="encoding_failed">Kodierung: Konnte nicht erkannt werden</string>
+    <string name="edit_hint">✎ Dateiinhalt hier bearbeiten…</string>
+    <string name="save">Speichern</string>
+    <string name="exit">BEENDEN</string>
+    <string name="undo">RÜCKGÄNGIG</string>
+    <string name="redo">WIEDERHOLEN</string>
+    <string name="exit_without_saving">Ohne Speichern beenden</string>
+    <string name="unsaved_changes">Es gibt ungespeicherte Änderungen. Ohne Speichern beenden?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="storage_permission_denied">Speicherberechtigung verweigert. Der Dateizugriff kann fehlschlagen.</string>
+    <string name="storage_permissions_granted">Speicherberechtigungen wurden erteilt.</string>
+    <string name="error_loading_file">Fehler beim Laden der Datei</string>
+    <string name="no_changes_to_save">Keine Änderungen zum Speichern</string>
+    <string name="file_saved">Datei gespeichert</string>
+    <string name="error_saving_file">Fehler beim Speichern der Datei</string>
+    <string name="file_not_found">Datei nicht gefunden</string>
+    <string name="delete_file">Datei löschen</string>
+    <string name="delete_confirmation">Möchten Sie diese Datei wirklich löschen?</string>
+    <string name="file_deleted">Datei gelöscht</string>
+    <string name="error_deleting_file">Fehler beim Löschen der Datei</string>
+    <string name="access_denied">Zugriff auf die Datei verweigert</string>
+    <string name="android_blocked_file_access">Android blockiert den Zugriff auf diese Datei</string>
+
+    <!-- File Item -->
+    <string name="file_icon">📄</string>
+    <string name="filename_placeholder">dateiname.txt</string>
+    <string name="file_preview_placeholder">Dateivorschau…</string>
+    <string name="encoding_placeholder">Kodierung</string>
+    <string name="last_modified_placeholder">Zuletzt geändert: --</string>
+    <string name="loading">Wird geladen…</string>
+</resources>

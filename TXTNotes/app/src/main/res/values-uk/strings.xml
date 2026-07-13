@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Info -->
+    <string name="app_name">TeXeTeScribe</string>
+    <string name="app_subtitle">від Євген Барилюк EB43.GITHUB.IO</string>
+
+    <!-- Main Activity -->
+    <string name="directory_path">Шлях до папки</string>
+    <string name="no_txt_files">⦻ \n У вибраній папці немає TXT-файлів.</string>
+    <string name="rescan_files">Повторно просканувати папку</string>
+    <string name="create_new_txt">Створити новий TXT-файл</string>
+    <string name="rescanning_files">Повторне сканування файлів…</string>
+    <string name="no_folder_selected">Папку не вибрано.</string>
+    <string name="invalid_folder">Це віртуальна папка, її неможливо використовувати. Виберіть справжню папку, наприклад «Документи», або будь-яку іншу створену вами папку.</string>
+    <string name="folder_not_accessible">Вибрана папка недоступна. Будь ласка, виберіть іншу.</string>
+    <string name="cannot_persist_permission">Не вдалося зберегти дозвіл на доступ до папки. Будь ласка, виберіть її повторно.</string>
+    <string name="permission_denied">Доступ до зовнішнього сховища заборонено.</string>
+    <string name="using_default_folder">Використовується папка за замовчуванням: %s</string>
+    <string name="unable_access_private">Не вдалося отримати доступ до приватної папки застосунку.</string>
+    <string name="error_default_folder">Помилка встановлення папки за замовчуванням.</string>
+    <string name="select_folder_to_save">Будь ласка, виберіть папку для збереження файлів.</string>
+    <string name="failed_create_directory">Не вдалося створити папку.</string>
+    <string name="failed_create_file">Не вдалося створити файл.</string>
+    <string name="error_creating_file">Помилка створення файлу: %s</string>
+    <string name="invalid_folder_select_again">Неприпустима папка. Будь ласка, виберіть її знову.</string>
+    <string name="failed_create_file_in_folder">Не вдалося створити файл у папці.</string>
+    <string name="error_reading_file">Помилка читання файлу</string>
+    <string name="loading_preview">Завантаження попереднього перегляду…</string>
+    <string name="error_reading_file_warning">⚠️ Помилка читання файлу</string>
+    <string name="empty_file">📝 Порожній файл</string>
+    <string name="unknown_date">📅 Невідома дата</string>
+    <string name="date_format">📅 %s</string>
+
+    <!-- Edit Activity -->
+    <string name="file_name">Назва файлу</string>
+    <string name="fileRenameButonTextString">Перейменувати файл</string>
+    <string name="delete">Видалити</string>
+    <string name="encoding_label">Кодування: %s</string>
+    <string name="encoding_failed">Кодування: не вдалося визначити</string>
+    <string name="edit_hint">✎ Введіть або змініть вміст файлу…</string>
+    <string name="save">Зберегти</string>
+    <string name="exit">ВИЙТИ</string>
+    <string name="undo">СКАСУВАТИ</string>
+    <string name="redo">ПОВТОРИТИ</string>
+    <string name="exit_without_saving">Вийти без збереження</string>
+    <string name="unsaved_changes">Є незбережені зміни. Вийти без збереження?</string>
+    <string name="yes">Так</string>
+    <string name="no">Ні</string>
+    <string name="storage_permission_denied">Доступ до сховища заборонено. Доступ до файлів може бути недоступним.</string>
+    <string name="storage_permissions_granted">Дозвіл на доступ до сховища надано.</string>
+    <string name="error_loading_file">Помилка завантаження файлу</string>
+    <string name="no_changes_to_save">Немає змін для збереження</string>
+    <string name="file_saved">Файл збережено</string>
+    <string name="error_saving_file">Помилка збереження файлу</string>
+    <string name="file_not_found">Файл не знайдено</string>
+    <string name="delete_file">Видалити файл</string>
+    <string name="delete_confirmation">Ви впевнені, що хочете видалити цей файл?</string>
+    <string name="file_deleted">Файл видалено</string>
+    <string name="error_deleting_file">Помилка видалення файлу</string>
+    <string name="access_denied">Доступ до файлу заборонено</string>
+    <string name="android_blocked_file_access">Android заблокував доступ до цього файлу</string>
+
+    <!-- File Item -->
+    <string name="file_icon">📄</string>
+    <string name="filename_placeholder">назва_файлу.txt</string>
+    <string name="file_preview_placeholder">Попередній перегляд вмісту файлу…</string>
+    <string name="encoding_placeholder">Кодування</string>
+    <string name="last_modified_placeholder">Остання зміна: --</string>
+    <string name="loading">Завантаження…</string>
+</resources>
