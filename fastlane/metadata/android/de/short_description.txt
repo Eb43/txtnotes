@@ -1,0 +1,1 @@
+Textbasierte Dateien lesen und schreiben: TXT, HTML, CSV, XML, YAML, INI, MD

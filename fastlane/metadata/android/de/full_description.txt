@@ -1,0 +1,32 @@
+TeXeTeScribe bietet das, was dem Standard-Android fehlt: das Lesen und Bearbeiten textbasierter Dateien. Außerdem setzt die App das Konzept eines Ordners mit Notizbuchfunktion um.
+
+📖 Ihre Daten bleiben jederzeit lesbar
+   TXT-Dateien funktionieren auf Android, iOS, Windows, Linux, macOS, ChromeOS, Smart-TVs, E-Readern, Spielkonsolen, eingebetteten Systemen, IoT-Geräten sowie Cloud-Diensten wie Google Drive, iCloud und Dropbox. TXT ist eines der universellsten Formate, da jedes Betriebssystem es unterstützt. Dadurch entstehen keine Kompatibilitätsprobleme proprietärer Formate.
+
+🛡 Machen Sie Ihre Inhalte zukunftssicher
+   Textdateien sind universell und langfristig nutzbar. Sie benötigen keine spezielle App, um eine TXT-Datei zu öffnen. Sie lässt sich auf nahezu jedem Gerät mit einem Prozessor lesen und bearbeiten.
+
+🔓 Notizen bleiben jederzeit zugänglich
+   Viele Notiz-Apps speichern Daten in privaten Datenbanken oder proprietären Cloud-Formaten. Fällt die App nach einem Update aus oder verschwindet aus dem App-Store, werden Notizen oft unlesbar oder lassen sich nicht exportieren. Einfache .txt-Dateien vermeiden diese Probleme.
+
+💾 Notizen überstehen den Ausfall eines Telefons
+   Android verschlüsselt den internen Speicher standardmäßig seit 2015. Kann das Betriebssystem nach einem Fehler oder Update nicht mehr starten, sind die Daten oft nicht mehr zugänglich, und eine Reparatur erfordert häufig das Löschen aller Inhalte. Auf einer microSD-Karte gespeicherte Notizen bleiben physisch vom System getrennt und können auf jedem anderen Gerät direkt gelesen werden.
+
+🔠 Text bleibt lesbar
+  Textdateien verwenden unterschiedliche Zeichenkodierungen wie UTF-8, ANSI (Windows-1251), CP866, MacRoman oder UTF-32. Viele Android-Apps unterstützen nur UTF-8, wodurch ältere oder fremdsprachige Dokumente als Zeichensalat erscheinen. TeXeTeScribe erkennt die Zeichenkodierung automatisch und zeigt den Text korrekt an.
+
+👁 Inhalt vor dem Öffnen ansehen
+   Für jede Datei werden eine kurze Inhaltsvorschau und der Zeitpunkt der letzten Änderung angezeigt. So finden Sie die gewünschte Notiz oder das richtige Dokument sofort.
+
+💡 Die neuesten Notizen bleiben oben
+   Statt alphabetischer Sortierung zeigt TeXeTeScribe die zuletzt bearbeiteten Notizen zuerst an. So können Sie ohne Suchen direkt weiterarbeiten.
+
+🛠 Fast alle textbasierten Dateien öffnen
+   TeXeTeScribe erkennt und bearbeitet unter anderem .txt, .md, .json, .xml, .csv, .html, .log, .yaml und .cfg. Das spart Zeit, wenn eine Datei nur schnell gelesen oder korrigiert werden soll.
+
+🛰 Dauerhaft offline arbeiten
+   Alle Daten werden lokal gespeichert. Notizen, Konfigurationsdateien und Protokolle bleiben auch ohne Internetverbindung jederzeit verfügbar.
+
+TeXeTeScribe ermöglicht das Erstellen, Lesen und Bearbeiten einfacher Textnotizen, die auf allen Geräten und Plattformen vollständig zugänglich und kompatibel bleiben. Ihre Daten bleiben zukunftssicher, portabel und werden niemals in proprietären Formaten oder Anwendungen eingeschlossen.
+
+Erstellt von Eugen Barilyuk EB43 https://eb43.github.io
