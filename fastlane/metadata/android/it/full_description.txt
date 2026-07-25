@@ -1,0 +1,32 @@
+TeXeTeScribe offre ciò che Android non include di default: leggere e modificare file di testo. Trasforma inoltre una cartella in un pratico taccuino.
+
+📖 I tuoi dati restano sempre leggibili
+   Se una piattaforma può visualizzare testo, può aprire un file TXT: Android, iOS, Windows, Linux, macOS, ChromeOS, Smart TV, e-reader, console di gioco, dispositivi embedded e IoT, oltre ai servizi cloud come Google Drive, iCloud e Dropbox. I file TXT sono tra i formati più universali perché tutti i sistemi operativi li comprendono. I file di testo evitano i problemi di compatibilità dei formati proprietari e permettono un trasferimento affidabile tra dispositivi e piattaforme.
+
+🛡 Proteggi i tuoi contenuti nel tempo
+   I file di testo sono universali e durevoli, senza i problemi di compatibilità tipici dei formati proprietari. Non serve un'app specifica per aprire un file TXT: può essere visualizzato e modificato su quasi qualsiasi dispositivo dotato di processore.
+
+🔓 Le note in formato TXT non restano mai intrappolate
+   Molte app salvano i dati in database privati o formati cloud proprietari. Se un aggiornamento difettoso blocca l'app, se si verifica un errore o se viene rimossa dallo store, anche le note possono diventare illeggibili, impossibili da esportare o bloccate in un backup inutilizzabile. I semplici file .txt evitano tutto questo.
+
+💾 Le note sopravvivono ai guasti del telefono
+   Dal 2015 Android crittografa automaticamente la memoria interna. Se il sistema si danneggia dopo un aggiornamento o il telefono non si avvia più, i dati possono diventare inaccessibili. Spesso la riparazione richiede la cancellazione completa del dispositivo. Salvando le note su una scheda microSD, i file restano separati dal sistema. Basta inserirla in un altro dispositivo per accedere subito ai file con qualsiasi gestore.
+
+🔠 Il testo resta sempre leggibile
+   Ogni file utilizza una propria codifica. Android usa UTF-8, Windows spesso ANSI (Windows-1251), i vecchi programmi DOS CP866 e i sistemi macOS classici MacRoman. Esiste anche UTF-32 per alcuni file tecnici. Molte app Android assumono che tutti i file siano UTF-8, per questo documenti vecchi o testi in altre lingue possono apparire illeggibili. TeXeTeScribe rileva automaticamente la codifica corretta e visualizza il testo nel modo giusto.
+
+👁 Guarda il contenuto prima di aprire il file
+   L'app mostra non solo il nome dei file, ma anche una breve anteprima del contenuto e la data dell'ultima modifica. Trovi subito la nota o il documento desiderato senza aprire ogni file.
+
+💡 Le idee più recenti restano in alto
+   Molte app ordinano le note alfabeticamente o per titolo. TeXeTeScribe segue il modo reale di prendere appunti: ciò che hai appena scritto è ciò che probabilmente continuerai a sviluppare. I file modificati più di recente restano sempre in cima all'elenco.
+
+🛠 Apri quasi qualsiasi file di testo
+   TeXeTeScribe riconosce e modifica .txt, .md, .json, .xml, .csv, .html, .log, .yaml, .cfg, .ini e molti altri formati. Risparmi tempo quando devi solo leggere o correggere un file.
+
+🛰 Lavora sempre offline
+   Tutti i dati sono salvati localmente, quindi l'app funziona senza Internet. Note, file di configurazione e registri restano disponibili anche in aereo o nelle aree senza copertura.
+
+TeXeTeScribe permette di creare, leggere e modificare note in testo semplice che rimangono accessibili e compatibili con quasi tutti i dispositivi e sistemi operativi. I tuoi dati restano portabili, pronti per il futuro e non vengono mai bloccati in formati proprietari o legati a una sola applicazione.
+
+Creato da Eugen Barilyuk EB43 https://eb43.github.io
