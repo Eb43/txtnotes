@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="headerBackground">#B5E7FD</color>
+
+    <color name="editorBackground">#FFFFFF</color>
+
+    <color name="cardBackground">#FFFFFF</color>
+
+    <color name="primaryText">#000000</color>
+
+    <color name="secondaryText">#555555</color>
+
+    <color name="tertiaryText">#666666</color>
+
+    <color name="hintText">#999999</color>
+
+    <color name="iconTint">#403F3F</color>
+
+    <color name="dividerColor">#FFFFFF</color>
+
+    <color name="folderButtonBackgroundColuor">#D8D8D8</color>
+    <color name="editExitButtonColuor">#8C8C8C</color>
+
+</resources>

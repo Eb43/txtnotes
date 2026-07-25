@@ -9,7 +9,7 @@
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#B5E7FD"
+        android:background="@color/headerBackground"
         android:orientation="horizontal"
         android:padding="10dp"
         android:gravity="center_vertical">
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_menu_edit"
-                app:tint="#403F3F" />
+                app:tint="@color/iconTint" />
 
             <TextView
                 android:id="@+id/fileRenameButonTextString"
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/file_name"
-            android:textColor="#000"
+            android:textColor="@color/primaryText"
             android:textSize="18sp" />
 
 
@@ -60,7 +60,7 @@
             android:layout_gravity="end"
             android:contentDescription="Delete"
             android:src="@android:drawable/ic_menu_delete"
-            app:tint="#403F3F" />
+            app:tint="@color/iconTint" />
     </LinearLayout>
 
 
@@ -69,11 +69,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/headerLayout"
-        android:background="#B5E7FD"
+        android:background="@color/headerBackground"
         android:includeFontPadding="false"
         android:paddingStart="10dp"
         android:text="@string/encoding_failed"
-        android:textColor="#555555"
+        android:textColor="@color/secondaryText"
         android:textSize="14sp" />
 
     <EditText
@@ -82,6 +82,9 @@
         android:layout_height="0dp"
         android:layout_below="@id/fileEncodingTextView"
         android:layout_above="@id/buttonLayout"
+        android:background="@color/editorBackground"
+        android:textColor="@color/primaryText"
+        android:textColorHint="@color/secondaryText"
         android:gravity="top"
         android:padding="16dp"
         android:textSize="16sp"
@@ -101,7 +104,7 @@
         android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#B5E7FD"
+        android:background="@color/headerBackground"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
 
@@ -119,14 +122,14 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:contentDescription="Save"
                 android:src="@android:drawable/ic_menu_save"
-                android:tint="#403F3F" />
+                android:tint="@color/iconTint" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/save"
                 android:textSize="12sp"
-                android:textColor="#403F3F" />
+                android:textColor="@color/secondaryText" />
         </LinearLayout>
 
         <!-- smaller divider -->
@@ -134,7 +137,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:background="#FFFFFF" />
+            android:background="@color/dividerColor" />
 
         <!-- UNDO -->
         <LinearLayout
@@ -157,14 +160,14 @@
                 android:focusable="false"
                 android:contentDescription="Undo"
                 android:src="@android:drawable/ic_menu_revert"
-                android:tint="#403F3F" />
+                android:tint="@color/iconTint" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/undo"
                 android:textSize="12sp"
-                android:textColor="#403F3F" />
+                android:textColor="@color/secondaryText" />
         </LinearLayout>
 
         <!-- REDO -->
@@ -188,14 +191,14 @@
                 android:focusable="false"
                 android:contentDescription="Redo"
                 android:src="@android:drawable/ic_menu_rotate"
-                android:tint="#403F3F" />
+                android:tint="@color/iconTint" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/redo"
                 android:textSize="12sp"
-                android:textColor="#403F3F" />
+                android:textColor="@color/secondaryText" />
         </LinearLayout>
 
         <!-- smaller divider -->
@@ -203,7 +206,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:background="#FFFFFF" />
+            android:background="@color/dividerColor" />
 
         <Button
             android:id="@+id/cancelButton"
@@ -216,8 +219,13 @@
             android:contentDescription="Exit"
             android:text="@string/exit"
             android:textAlignment="center"
-            android:textColor="#8C8C8C"
+            android:textColor="@color/editExitButtonColuor"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="30sp"
+            android:autoSizeStepGranularity="1sp"/>
     </LinearLayout>
 </RelativeLayout>

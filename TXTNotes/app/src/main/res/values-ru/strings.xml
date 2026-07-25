@@ -2,7 +2,7 @@
 <resources>
     <!-- App Info -->
     <string name="app_name">TeXeTeScribe</string>
-    <string name="app_subtitle">by Eugen Barilyuk EB43.GITHUB.IO</string>
+    <string name="app_subtitle">от Евген Барилюк EB43.GITHUB.IO</string>
 
     <!-- Main Activity -->
     <string name="directory_path">Путь к папке</string>

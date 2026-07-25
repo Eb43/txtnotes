@@ -9,7 +9,7 @@
     android:layout_marginEnd="4dp"
     android:layout_marginRight="4dp"
     android:layout_marginBottom="40dp"
-    app:cardBackgroundColor="@android:color/white"
+    app:cardBackgroundColor="@color/cardBackground"
     app:cardCornerRadius="0dp"
     app:cardElevation="2dp">
 
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:background="#E8F4FD"
+            android:background="@color/headerBackground"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="8dp">
@@ -44,7 +44,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="@string/filename_placeholder"
-                android:textColor="@android:color/black"
+                android:textColor="@color/primaryText"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -55,12 +55,12 @@
             android:id="@+id/filePreview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FAFAFA"
+            android:background="@color/editorBackground"
             android:ellipsize="end"
             android:maxLines="10"
             android:padding="6dp"
             android:text="@string/file_preview_placeholder"
-            android:textColor="#666666"
+            android:textColor="@color/tertiaryText"
             android:textSize="13sp" />
 
         <LinearLayout
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:text="@string/encoding_placeholder"
-                android:textColor="#555555"
+                android:textColor="@color/secondaryText"
                 android:textSize="11sp" />
 
             <!-- Spacer to push lastModified to the right -->
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:text="@string/last_modified_placeholder"
-                android:textColor="#999999"
+                android:textColor="@color/hintText"
                 android:textSize="11sp" />
         </LinearLayout>
 

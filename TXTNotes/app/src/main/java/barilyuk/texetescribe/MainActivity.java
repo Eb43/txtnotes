@@ -109,7 +109,11 @@ public class MainActivity extends AppCompatActivity {
         };
 
         // Check for permissions on first launch
-        if (checkPermissions()) {
+        boolean granted = checkPermissions();
+
+        Log.d("TXTNotes", "checkPermissions = " + granted);
+
+        if (granted) {
             loadSelectedFolder();
         } else {
             requestPermissions();
@@ -187,12 +191,34 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     private boolean checkPermissions() {
-        return ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+
+        // Android 10+ uses the Storage Access Framework.
+        // No READ_EXTERNAL_STORAGE runtime permission is needed.
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            return true;
+        }
+
+        return ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+        ) == PackageManager.PERMISSION_GRANTED;
     }
 
+
     private void requestPermissions() {
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_PERMISSIONS);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            loadSelectedFolder();
+            return;
+        }
+
+        ActivityCompat.requestPermissions(
+                this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                REQUEST_CODE_PERMISSIONS
+        );
     }
 
     @Override
@@ -285,10 +311,14 @@ public class MainActivity extends AppCompatActivity {
     private void loadSelectedFolder() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String uriString = sharedPreferences.getString(SELECTED_FOLDER_KEY, null);
+        Log.d("TXTNotes", "Saved URI = " + uriString);
 
         if (uriString != null) {
             try {
                 selectedFolderUri = Uri.parse(uriString);
+                Log.d("TXTNotes", "Parsed URI = " + selectedFolderUri);
+                Log.d("TXTNotes",
+                        "Accessible = " + isUriAccessible(selectedFolderUri));
                 if (selectedFolderUri != null && isUriAccessible(selectedFolderUri)) {
                     currentDirectoryPath.setText(selectedFolderUri.getPath());
                     displayTxtFiles(selectedFolderUri);

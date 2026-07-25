@@ -71,13 +71,13 @@ class FileCardAdapter extends BaseAdapter {
         if (content != null && !content.equals(holder.lastContent)) {
             if (content.equals("Loading...")) {
                 holder.filePreview.setText(R.string.loading_preview);
-                holder.filePreview.setTextColor(0xFF999999);
+                holder.filePreview.setTextColor(context.getColor(R.color.tertiaryText));
             } else if (content.equals("Error reading file")) {
                 holder.filePreview.setText(R.string.error_reading_file_warning);
-                holder.filePreview.setTextColor(0xFFFF6B6B);
+                holder.filePreview.setTextColor(context.getColor(R.color.tertiaryText));
             } else {
                 holder.filePreview.setText(content.isEmpty() ? context.getString(R.string.empty_file) : content);
-                holder.filePreview.setTextColor(0xFF666666);
+                holder.filePreview.setTextColor(context.getColor(R.color.tertiaryText));
             }
             holder.lastContent = content;
         }
