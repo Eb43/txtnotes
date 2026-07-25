@@ -1,0 +1,1 @@
+Czytaj i zapisuj pliki tekstowe: TXT, JSON, HTML, CSV, XML, YAML, INI, MD

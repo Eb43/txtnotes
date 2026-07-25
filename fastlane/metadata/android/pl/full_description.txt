@@ -1,0 +1,32 @@
+TeXeTeScribe zapewnia funkcje, których brakuje w standardowym systemie Android: odczyt i edycję plików tekstowych. Aplikacja wprowadza także wygodną koncepcję folderu pełniącego rolę cyfrowego notatnika.
+
+📖 Twoje dane zawsze pozostają czytelne
+  Jeśli urządzenie potrafi wyświetlać tekst, potrafi również otworzyć plik TXT. Dotyczy to systemów Android, iOS, Windows, Linux, macOS, ChromeOS, Smart TV, czytników e-booków, konsol do gier, urządzeń wbudowanych i IoT, Google Drive, iCloud czy Dropbox. Pliki TXT należą do najbardziej uniwersalnych formatów, ponieważ każdy system operacyjny potrafi je odczytać. Dzięki temu unikasz problemów zgodności charakterystycznych dla zamkniętych formatów i możesz bez przeszkód przenosić swoje dane pomiędzy urządzeniami oraz platformami.
+
+🛡 Zadbaj o przyszłość swoich danych
+  Pliki tekstowe są uniwersalne i odporne na upływ czasu. Nie wymagają konkretnej aplikacji ani specjalnego formatu, aby je otworzyć. Praktycznie każde urządzenie wyposażone w procesor pozwala wyświetlać i edytować zwykłe pliki TXT, dzięki czemu Twoje notatki pozostają dostępne przez wiele lat.
+
+🔓 Notatki zapisane jako TXT nigdy nie zostają uwięzione
+  Wiele aplikacji przechowuje dane we własnych bazach lub zamkniętych formatach chmurowych. Jeśli program przestanie działać po nieudanej aktualizacji, ulegnie awarii albo zniknie ze sklepu, dostęp do notatek może zostać utracony. Zwykłe pliki .txt eliminują ten problem, ponieważ pozostają niezależne od konkretnej aplikacji.
+
+💾 Notatki przetrwają awarię telefonu
+  Dane zapisane w pamięci wewnętrznej Androida są domyślnie szyfrowane. Gdy system przestaje się uruchamiać lub wymaga przywrócenia ustawień fabrycznych, pliki zapisane w pamięci telefonu mogą stać się niedostępne. Zapisywanie notatek na karcie microSD oddziela je od systemu operacyjnego. Wystarczy włożyć kartę do innego urządzenia, aby uzyskać natychmiastowy dostęp do wszystkich plików za pomocą dowolnego menedżera plików.
+
+🔠 Tekst zawsze pozostaje czytelny
+  Pliki tekstowe wykorzystują różne kodowania znaków. Android domyślnie używa UTF-8, Windows często zapisuje pliki jako ANSI (Windows-1251), starsze programy DOS korzystają z CP866, a klasyczny macOS używał MacRoman. Spotykane jest również UTF-32. Większość aplikacji na Androidzie zakłada, że każdy plik zapisano w UTF-8, dlatego starsze dokumenty lub teksty w innych językach często wyświetlają się jako nieczytelne znaki. TeXeTeScribe automatycznie wykrywa właściwe kodowanie i poprawnie wyświetla zawartość.
+
+👁 Sprawdź zawartość przed otwarciem
+  Lista plików zawiera nie tylko nazwy. Aplikacja pokazuje krótki podgląd treści oraz datę ostatniej modyfikacji każdego dokumentu, dzięki czemu łatwo rozpoznasz właściwą notatkę bez otwierania kolejnych plików.
+
+💡 Najnowsze notatki są zawsze na górze
+  Wiele aplikacji sortuje dokumenty alfabetycznie, przez co ostatnio edytowane notatki szybko giną w długiej liście. TeXeTeScribe wyświetla na początku pliki, nad którymi pracowano najpóźniej, umożliwiając natychmiastowy powrót do rozpoczętej pracy.
+
+🛠 Otwieraj niemal wszystkie popularne pliki tekstowe
+  Aplikacja obsługuje wiele codziennie używanych formatów, między innymi .txt, .md, .json, .xml, .csv, .html, .log, .yaml, .cfg, .ini oraz inne pliki tekstowe. Pozwala szybko odczytać lub poprawić dokument bez instalowania kolejnych programów.
+
+🛰 Pracuj całkowicie offline
+  Wszystkie dane są przechowywane lokalnie, dlatego aplikacja działa bez dostępu do Internetu. Notatki, pliki konfiguracyjne oraz logi pozostają dostępne zawsze, również podczas podróży samolotem lub w miejscach pozbawionych zasięgu.
+
+TeXeTeScribe umożliwia tworzenie, odczytywanie i edycję zwykłych notatek tekstowych, które pozostają w pełni zgodne ze wszystkimi urządzeniami i systemami operacyjnymi. Twoje dane są przenośne, odporne na zmiany technologii i nigdy nie zostają zamknięte w prywatnych formatach ani zależne od jednej aplikacji.
+
+Autor: Eugen Barilyuk EB43 https://eb43.github.io

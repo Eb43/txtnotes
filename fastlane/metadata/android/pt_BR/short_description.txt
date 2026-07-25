@@ -1,0 +1,1 @@
+Leia e escreva arquivos TXT, JSON, HTML, CSV, XML, YAML, INI, MD e muito mais

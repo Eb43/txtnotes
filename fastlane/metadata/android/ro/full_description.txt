@@ -1,0 +1,32 @@
+TeXeTeScribe oferă ceea ce lipsește Androidului: citirea și editarea fișierelor text. De asemenea, transformă un dosar într-un caiet de notițe.
+
+📖 Datele dumneavoastră rămân întotdeauna lizibile
+   Dacă o platformă poate afișa text, poate deschide și un fișier TXT: Android, iOS, Windows, Linux, macOS, ChromeOS, televizoare inteligente, cititoare de cărți electronice, console de jocuri, dispozitive integrate și IoT, precum și servicii cloud precum Google Drive, iCloud și Dropbox. Fișierele TXT sunt unul dintre cele mai universale formate deoarece toate sistemele de operare le înțeleg. Fișierele text evită problemele de compatibilitate ale formatelor proprietare și permit transferul ușor între dispozitive și platforme.
+
+🛡 Protejați-vă conținutul pentru viitor
+   Fișierele text sunt universale și durabile. Nu suferă de problemele de compatibilitate ale formatelor proprietare. Nu aveți nevoie de o aplicație specială pentru a deschide un fișier TXT. Acesta poate fi vizualizat și editat pe aproape orice dispozitiv cu procesor.
+
+🔓 Notițele TXT nu rămân niciodată captive
+   Multe aplicații stochează datele în baze private sau formate cloud proprietare. Dacă aplicația se defectează, dispare din magazin sau o actualizare eșuează, notițele pot deveni imposibil de citit, exportat sau recuperat din backup. Fișierele .txt evită complet aceste probleme.
+
+💾 Notițele supraviețuiesc defectării telefonului
+   Din 2015, Android criptează implicit memoria internă. Dacă sistemul nu mai pornește după o actualizare, datele pot deveni inaccesibile, iar repararea implică deseori ștergerea completă a dispozitivului. Salvarea pe un card microSD păstrează fișierele separate de sistem. Introduceți cardul într-un alt dispozitiv și accesați imediat fișierele din orice manager de fișiere.
+
+🔠 Textul rămâne întotdeauna lizibil
+   Fiecare fișier are propria codificare. Android folosește UTF-8, Windows utilizează adesea ANSI (Windows-1251), DOS folosea CP866, iar vechiul macOS utiliza MacRoman. Unele fișiere tehnice folosesc UTF-32. Multe aplicații Android presupun că toate fișierele sunt UTF-8, de aceea documentele vechi sau textele în alte limbi apar ca simboluri neinteligibile. TeXeTeScribe detectează automat codificarea corectă și afișează textul corespunzător.
+
+👁 Vedeți conținutul înainte de deschidere
+   Aplicația afișează nu doar numele fișierelor, ci și o scurtă previzualizare și data ultimei modificări. Astfel găsiți rapid documentul dorit fără a deschide fiecare fișier.
+
+💡 Cele mai recente notițe rămân sus
+   Multe aplicații sortează notițele alfabetic sau după titlu. TeXeTeScribe păstrează în partea de sus fișierele modificate cel mai recent, astfel încât puteți continua imediat lucrul fără căutări.
+
+🛠 Deschideți aproape orice fișier text
+   TeXeTeScribe recunoaște și editează formate precum .txt, .md, .json, .xml, .csv, .html, .log, .yaml, .cfg, .ini și multe altele. Citiți sau corectați rapid fișiere fără alte aplicații.
+
+🛰 Lucrați permanent offline
+   Toate datele sunt stocate local, astfel încât aplicația funcționează fără Internet. Notițele, fișierele de configurare și jurnalele rămân disponibile chiar și în avion sau în zone fără semnal.
+
+TeXeTeScribe vă permite să creați, să citiți și să editați notițe în format text simplu, compatibile cu aproape toate dispozitivele și sistemele de operare. Datele rămân portabile, pregătite pentru viitor și nu sunt niciodată blocate în formate proprietare sau dependente de o singură aplicație.
+
+Creat de Eugen Barilyuk EB43 https://eb43.github.io

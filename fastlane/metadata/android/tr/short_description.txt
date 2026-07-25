@@ -1,0 +1,1 @@
+TXT, JSON, HTML, CSV, XML, YAML, INI, MD dosyalarını okuyun ve düzenleyin

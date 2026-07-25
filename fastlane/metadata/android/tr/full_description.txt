@@ -1,0 +1,32 @@
+TeXeTeScribe, Android'in varsayılan olarak sunmadığı özelliği sağlar: metin tabanlı dosyaları okuma ve düzenleme. Ayrıca klasörleri not defteri gibi kullanmanıza olanak tanır.
+
+📖 Verileriniz her zaman okunabilir kalır
+   Metin görüntüleyebilen her platform TXT dosyalarını da açabilir: Android, iOS, Windows, Linux, macOS, ChromeOS, Akıllı TV'ler, e-kitap okuyucuları, oyun konsolları, gömülü sistemler, IoT cihazları ve Google Drive, iCloud, Dropbox gibi bulut hizmetleri. TXT, tüm işletim sistemlerinin desteklediği en evrensel dosya biçimlerinden biridir. Düz metin dosyaları, özel biçimlerin uyumluluk sorunlarını ortadan kaldırır ve dosyaların cihazlar arasında sorunsuz taşınmasını sağlar.
+
+🛡 İçeriğinizi geleceğe hazırlayın
+   Metin dosyaları evrenseldir ve uzun yıllar kullanılabilir. Özel not biçimlerinin yol açtığı uyumluluk sorunlarından etkilenmezler. TXT dosyalarını açmak için belirli bir uygulamaya ihtiyacınız yoktur. İşlemciye sahip hemen her cihazda görüntülenebilir ve düzenlenebilir.
+
+🔓 TXT notları asla kilitli kalmaz
+   Çoğu not uygulaması verileri özel veritabanlarında veya bulut biçimlerinde saklar. Uygulama bozulursa, kötü bir güncellemeden sonra çalışmazsa veya mağazadan kaldırılırsa notlarınız da kaybolabilir. Okunamaz, dışa aktarılamaz ve açamayacağınız yedeklerin içinde kalabilir. Düz .txt dosyaları bu riskleri ortadan kaldırır.
+
+💾 Notlarınız telefon arızalarına dayanır
+   Android, 2015'ten beri dahili belleği varsayılan olarak şifreler. Sistem bozulursa veya telefon açılmazsa dahili bellekteki veriler erişilemez hale gelebilir. Onarım işlemi çoğu zaman tüm verilerin silinmesini gerektirir. Notları microSD karta kaydetmek onları sistemden fiziksel olarak ayırır. Kartı başka bir cihaza taktığınızda dosyalara herhangi bir dosya yöneticisiyle erişebilirsiniz.
+
+🔠 Metin her zaman doğru görünür
+   Her metin dosyasının kendi karakter kodlaması vardır. Android UTF-8, Windows çoğunlukla ANSI (Windows-1251), eski DOS programları CP866, klasik macOS ise MacRoman kullanır. Bazı teknik dosyalar UTF-32 kullanır. Çoğu Android uygulaması tüm dosyaların UTF-8 olduğunu varsaydığından eski belgeler veya yabancı diller bozuk görünebilir. TeXeTeScribe doğru kodlamayı otomatik algılar ve metni doğru görüntüler.
+
+👁 Açmadan önce içeriğini görün
+   Uygulama yalnızca dosya adlarını değil, içerik önizlemesini ve son değiştirilme tarihini de gösterir. Böylece doğru notu tek tek dosya açmadan hemen bulabilirsiniz.
+
+💡 En son notlarınız üstte kalır
+   Birçok not uygulaması dosyaları alfabetik sıralar. TeXeTeScribe ise en son düzenlenen notları en üstte tutar, böylece kaldığınız yerden arama yapmadan devam edebilirsiniz.
+
+🛠 Neredeyse tüm metin dosyalarını açın
+   TeXeTeScribe .txt, .md, .json, .xml, .csv, .html, .log, .yaml, .cfg, .ini ve birçok metin tabanlı biçimi tanır ve düzenler. Dosya okumak veya düzeltmek için başka uygulama aramanıza gerek kalmaz.
+
+🛰 Her zaman çevrimdışı çalışın
+   Tüm veriler cihazda yerel olarak saklanır. Uygulama internet olmadan çalışır. Notlarınız, yapılandırma dosyalarınız ve günlük kayıtlarınız uçakta veya kapsama alanı olmayan yerlerde bile kullanılabilir.
+
+TeXeTeScribe; düz metin notları oluşturmanızı, okumanızı ve düzenlemenizi sağlar. Dosyalarınız tüm cihaz ve platformlarla uyumlu, taşınabilir, geleceğe dayanıklı kalır ve hiçbir zaman özel biçimlere veya tek bir uygulamaya bağımlı olmaz.
+
+Eugen Barilyuk EB43 tarafından geliştirildi https://eb43.github.io
