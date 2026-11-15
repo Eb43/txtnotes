@@ -24,10 +24,12 @@ It is a free, offline note editor designed around plain `.TXT` files for maximum
 <p align="center">
   <img alt="TeXeTeScribe main screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg" width="300">
   <img alt="TeXeTeScribe edit screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/fastlane/metadata/android/en-US/images/phoneScreenshots/11.gif" width="300">
+  <img alt="TeXeTeScribe edit screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/fastlane/metadata/android/en-US/images/phoneScreenshots/texetescribe-search-functionality-demonstration.gif" width="300">
 </p>
 
 <p align="center">
   <img alt="TeXeTeScribe Android note taking app" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/fastlane/metadata/android/en-US/images/phoneScreenshots/3.jpg" width="300">
+  <img alt="TeXeTeScribe edit screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/fastlane/metadata/android/en-US/images/phoneScreenshots/6.jpg" width="300">
   <img alt="TeXeTeScribe edit screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/fastlane/metadata/android/en-US/images/phoneScreenshots/5.jpg" width="300">
 </p>
 
