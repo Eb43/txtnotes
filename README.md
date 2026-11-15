@@ -60,9 +60,7 @@ It is a free, offline note editor designed around plain `.TXT` files for maximum
 - **You control storage**. Create, rename, and manage notes directly inside user-selected folders using Android’s built-in file access system.  
 
 - **You work with any text-based file**. Beyond TXT, it opens and edits MD, LOG, INI, CFG, YAML, JSON, XML, CSV, and more.  
-
-- **You never lose progress**. Notes are automatically saved on exit or app minimization, preventing accidental data loss.  
-
+ 
 - **You own your data**. No accounts, ads, or hidden databases. Every note is a transparent text file you can move, back up, or open anywhere.
 
 <p align="center">
