@@ -21,6 +21,10 @@
 **TeXeTeScribe** provides what Android still lacks - the ability to read, edit, and create text-based files directly in folders you choose, including on **microSD cards**.  
 It is a free, offline note editor designed around plain `.TXT` files for maximum compatibility, privacy, and reliability.
 
+- **App name:** TeXeTeScribe  
+- **Minimum Android:** 8.0 (Oreo)  
+- **Permissions:** Storage access (read/write to selected folders)  
+
 <p align="center">
   <img alt="TeXeTeScribe main screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg" width="300">
   <img alt="TeXeTeScribe edit screen" src="https://raw.githubusercontent.com/Eb43/txtnotes/refs/heads/main/fastlane/metadata/android/en-US/images/phoneScreenshots/11.gif" width="300">
@@ -105,10 +109,12 @@ What you write stays fully under your ownership.
 
 ### 🧩 Technical Details
 
-- **App name:** TeXeTeScribe  
-- **APK size:** 6.5 MB  
-- **Minimum Android:** 8.0 (Oreo)  
-- **Permissions:** Storage access (read/write to selected folders)  
-- **License:** Open Source (see repository)  
+- v1.0. Initial release. Now thoughts and notes on Android can be safely stored on microSD.
+- v1.1. Support for “Open with” dialog. Notes can be opened via standard Android dialog
+- v1.2. Added UNDO and REDO functionality. Writing polished notes becomes easier.
+- v1.3. Added RENAME FILE button. TXT files can be renamed manually as you want in addition to standard auto generated name.
+- v1.4. Added UI translation languages Ukrainian and German.
+- v1.5. Added Android dark theme support. Fixed selected folder not being remembered in Android 14.
+- v1.6. Added text search. Search supports wildcard (*). Search results are clickable for fast travel to the matched word.
 
 ---
