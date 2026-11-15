@@ -1,0 +1,3 @@
+V1.6 changes:
+
+• Added text search. Search supports wildcard (*). Search results are clickable for fast travel to the matched word.
