@@ -67,4 +67,26 @@
     <string name="encoding_placeholder">Encoding</string>
     <string name="last_modified_placeholder">Last modified: --</string>
     <string name="loading">Loading…</string>
+
+    <!-- Search dialog -->
+
+    <string name="search_title">Search for text</string>
+    <string name="search_files">Search for text</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Enter text to find</string>
+    <string name="search_start">Start search</string>
+    <string name="search_stop">Stop search</string>
+    <string name="search_new">New search</string>
+    <string name="searching">Searching...</string>
+    <string name="search_stopped">Search stopped</string>
+    <string name="search_finished">Search completed. Matches: %1$d \n
+    Tap a search result to open the file at the matching text.</string>
+    <string name="search_no_folder">No folder selected</string>
+    <string name="search_help">Search is case-insensitive and checks both filenames and file contents.\n\n
+        Use wildcard symbol * to match any sequence of characters within a word.\n\n
+        Examples:\n• transp* finds transport, transplant, transparent, transpire.\n
+        • *log* finds catalog, logging, biology.\n
+        • report*2026 finds report_final_2026, report-2026, report2026.</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

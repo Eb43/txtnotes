@@ -67,4 +67,26 @@
     <string name="encoding_placeholder">Kodierung</string>
     <string name="last_modified_placeholder">Zuletzt geändert: --</string>
     <string name="loading">Wird geladen…</string>
+
+
+    <!-- Search dialog -->
+
+    <string name="search_title">Text suchen</string>
+    <string name="search_files">Text suchen</string>
+    <string name="search">Suchen</string>
+    <string name="search_hint">Suchtext eingeben</string>
+    <string name="search_start">Suche starten</string>
+    <string name="search_stop">Suche stoppen</string>
+    <string name="search_new">Neue Suche</string>
+    <string name="searching">Suche läuft...</string>
+    <string name="search_stopped">Suche angehalten</string>
+    <string name="search_finished">Suche abgeschlossen. Treffer: %1$d \n
+    Tippe auf ein Suchergebnis, um die Datei an der passenden Textstelle zu öffnen.</string>
+    <string name="search_no_folder">Kein Ordner ausgewählt</string>
+    <string name="search_help">Die Suche unterscheidet nicht zwischen Groß- und Kleinschreibung und durchsucht sowohl Dateinamen als auch Dateiinhalte.\n\n
+   Verwenden Sie das Platzhalterzeichen * , um eine beliebige Zeichenfolge innerhalb eines Wortes zu finden.\n\n
+   Beispiele:\n• transp* findet transport, transplant, transparent, transpire.\n
+   • *log* findet catalog, logging, biology.\n
+   • report*2026 findet report_final_2026, report-2026, report2026.</string>
+    <string name="cancel">Abbrechen</string>
 </resources>

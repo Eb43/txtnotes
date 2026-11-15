@@ -42,6 +42,29 @@ import org.mozilla.universalchardet.UniversalDetector;
 import java.util.List;
 import java.util.concurrent.Future;
 
+import android.app.AlertDialog;
+import android.text.TextUtils;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ArrayAdapter;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import android.graphics.Typeface;
+import android.util.TypedValue;
+
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.widget.FrameLayout;
+
+import android.view.WindowManager;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_OPEN_DIRECTORY = 1;
@@ -69,6 +92,19 @@ public class MainActivity extends AppCompatActivity {
     // Track if we're currently loading to prevent multiple concurrent loads
     private volatile boolean isLoading = false;
 
+    // Search state
+    private volatile boolean stopSearchRequested = false;
+    private volatile boolean searchRunning = false;
+
+    private AlertDialog searchDialog;
+    private EditText searchInput;
+    private Button searchActionButton;
+    private TextView searchStatus;
+    private ListView searchResultsList;
+
+    private ArrayList<SearchResult> searchResults;
+    private ArrayAdapter<SearchResult> searchAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +131,10 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton newFileButton = findViewById(R.id.newFileButton);
         newFileButton.setOnClickListener(v -> createNewFile());
 
+        // Initialize search button
+        ImageButton searchButton = findViewById(R.id.searchButton);
+        searchButton.setOnClickListener(v -> showSearchDialog());
+
         // Initialize the handler and rescan folder
         handler = new Handler(Looper.getMainLooper());
         rescanRunnable = new Runnable() {
@@ -107,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(this, REFRESH_INTERVAL_MS);
             }
         };
+
 
         // Check for permissions on first launch
         boolean granted = checkPermissions();
@@ -615,6 +656,595 @@ public class MainActivity extends AppCompatActivity {
         return uriString.contains("Android/data/" + getPackageName() + "/files")
                 || uriString.contains(appPrivatePath);
     }
+
+
+    // ---------------------------------------------------------
+    // SEARCH DIALOG
+    // ---------------------------------------------------------
+
+    private void showSearchDialog() {
+
+        LinearLayout root = new LinearLayout(this);
+        root.setOrientation(LinearLayout.VERTICAL);
+        root.setPadding(16, 12, 16, 8);
+
+        searchInput = new EditText(this);
+        searchInput.setSingleLine(true);
+        searchInput.setHint(R.string.search_hint);
+        root.addView(searchInput,
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        TextView help = new TextView(this);
+        help.setText(R.string.search_help);
+        help.setTextSize(13);
+        help.setPadding(0, 4, 0, 12);
+        root.addView(help);
+
+        searchStatus = new TextView(this);
+        searchStatus.setTextSize(13);
+        root.addView(searchStatus);
+
+        searchResults = new ArrayList<>();
+
+        searchAdapter = new ArrayAdapter<SearchResult>(
+                this,
+                android.R.layout.simple_list_item_1,
+                searchResults) {
+
+            @Override
+            public View getView(int position, View convertView,
+                                android.view.ViewGroup parent) {
+
+                TextView text = (TextView) super.getView(
+                        position, convertView, parent);
+
+                text.setSingleLine(true);
+                text.setEllipsize(TextUtils.TruncateAt.END);
+                text.setTextSize(14);
+
+                return text;
+            }
+        };
+
+        searchResultsList = new ListView(this);
+        searchResultsList.setAdapter(searchAdapter);
+        searchResultsList.setVerticalScrollBarEnabled(false);
+        searchResultsList.setDividerHeight(1);
+
+        FrameLayout listContainer = new FrameLayout(this);
+        listContainer.setMinimumHeight(0);
+
+        listContainer.addView(searchResultsList,
+                new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.MATCH_PARENT,
+                        FrameLayout.LayoutParams.MATCH_PARENT));
+
+        View scrollIndicator = new View(this) {
+            private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+            {
+                paint.setColor(Color.GRAY);
+                paint.setAlpha(180);
+                setClickable(false);
+                setFocusable(false);
+            }
+
+            @Override
+            protected void onDraw(Canvas canvas) {
+                super.onDraw(canvas);
+                canvas.drawRoundRect(
+                        0, 0, getWidth(), getHeight(),
+                        getWidth() / 2f, getWidth() / 2f, paint);
+            }
+        };
+
+        FrameLayout.LayoutParams indicatorParams =
+                new FrameLayout.LayoutParams(
+                        (int) (4 * getResources().getDisplayMetrics().density),
+                        FrameLayout.LayoutParams.MATCH_PARENT,
+                        android.view.Gravity.END);
+
+        indicatorParams.setMargins(0, 3, 3, 3);
+        listContainer.addView(scrollIndicator, indicatorParams);
+
+
+
+        searchResultsList.setOnItemClickListener(
+                (parent, view, position, id) -> {
+
+                    SearchResult result =
+                            searchResults.get(position);
+
+                    Intent intent = new Intent(
+                            MainActivity.this,
+                            EditActivity.class);
+
+                    intent.putExtra(
+                            "file_name",
+                            result.fileName);
+
+                    intent.putExtra(
+                            "folder_uri",
+                            result.folderUri.toString());
+
+                    intent.putExtra(
+                            "search_position",
+                            result.matchPosition);
+
+                    intent.putExtra(
+                            "search_length",
+                            result.matchLength);
+
+                    searchDialog.dismiss();
+
+                    startActivityForResult(intent, 2001);
+                });
+
+
+
+        LinearLayout.LayoutParams listParams =
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        0,
+                        1f);
+
+        root.addView(listContainer, listParams);
+
+        // Bottom buttons
+        LinearLayout buttons = new LinearLayout(this);
+        buttons.setOrientation(LinearLayout.HORIZONTAL);
+        buttons.setGravity(android.view.Gravity.END);
+
+        searchActionButton = new Button(this);
+        searchActionButton.setText(R.string.search_start);
+
+        Button cancelButton = new Button(this);
+        cancelButton.setText(R.string.cancel);
+
+        buttons.addView(searchActionButton);
+        buttons.addView(cancelButton);
+
+        root.addView(buttons);
+
+        searchDialog = new AlertDialog.Builder(this)
+                .setTitle(R.string.search_title)
+                .setView(root)
+                .create();
+
+        searchActionButton.setOnClickListener(v -> startSearch());
+
+        cancelButton.setOnClickListener(v -> {
+            if (searchRunning) {
+                stopSearchRequested = true;
+            }
+            searchDialog.dismiss();
+        });
+
+        searchDialog.setOnDismissListener(dialog -> {
+            if (searchRunning) {
+                stopSearchRequested = true;
+            }
+        });
+
+        searchDialog.show();
+
+        if (searchDialog.getWindow() != null) {
+            searchDialog.getWindow().setSoftInputMode(
+                    WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
+                            | WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+            searchDialog.getWindow().setLayout(
+                    WindowManager.LayoutParams.MATCH_PARENT,
+                    WindowManager.LayoutParams.MATCH_PARENT);
+        }
+    }
+
+
+    // ---------------------------------------------------------
+    // START SEARCH
+    // ---------------------------------------------------------
+
+    private void startSearch() {
+
+        String query = searchInput.getText().toString().trim();
+
+        if (query.isEmpty()) {
+            searchInput.setError(getString(R.string.search_hint));
+            return;
+        }
+
+        if (selectedFolderUri == null) {
+            Toast.makeText(this,
+                    R.string.search_no_folder,
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (backgroundExecutor == null ||
+                backgroundExecutor.isShutdown()) {
+            backgroundExecutor = Executors.newFixedThreadPool(8);
+        }
+
+        searchResults.clear();
+        searchAdapter.notifyDataSetChanged();
+
+        stopSearchRequested = false;
+        searchRunning = true;
+
+        searchStatus.setText(R.string.searching);
+
+        searchActionButton.setText(R.string.search_stop);
+        searchActionButton.setEnabled(true);
+        searchActionButton.setOnClickListener(v -> {
+            stopSearchRequested = true;
+            searchActionButton.setEnabled(false);
+        });
+
+        final Uri folderUri = selectedFolderUri;
+        final Pattern searchPattern = createSearchPattern(query);
+
+        backgroundExecutor.execute(() -> {
+
+            int totalMatches = 0;
+
+            try {
+
+                DocumentFile directory;
+
+                if ("file".equals(folderUri.getScheme())) {
+
+                    directory = DocumentFile.fromFile(
+                            new java.io.File(folderUri.getPath()));
+
+                } else {
+
+                    directory = DocumentFile.fromTreeUri(
+                            MainActivity.this, folderUri);
+                }
+
+                if (directory == null ||
+                        !directory.isDirectory()) {
+                    throw new IOException("Invalid directory");
+                }
+
+                DocumentFile[] files = directory.listFiles();
+
+                if (files != null) {
+
+                    for (DocumentFile file : files) {
+
+                        if (stopSearchRequested ||
+                                Thread.currentThread().isInterrupted()) {
+                            break;
+                        }
+
+                        String fileName = file.getName();
+
+                        if (fileName == null ||
+                                !fileName.toLowerCase(Locale.ROOT)
+                                        .endsWith(".txt")) {
+                            continue;
+                        }
+
+                        ArrayList<SearchResult> batch =
+                                new ArrayList<>();
+
+                        // 1. Search filename
+                        Matcher nameMatcher =
+                                searchPattern.matcher(fileName);
+
+                        while (nameMatcher.find()) {
+
+                            if (nameMatcher.group().isEmpty()) {
+                                continue;
+                            }
+
+                            batch.add(new SearchResult(
+                                    fileName,
+                                    nameMatcher.group(),
+                                    nameMatcher.group(),
+                                    file,
+                                    folderUri,
+                                    -1));
+                        }
+
+                        // 2. Detect encoding using the COMPLETE file
+                        byte[] fileBytes = readAllFileBytes(file);
+
+                        String encoding =
+                                detectEncodingWithFallback(fileBytes);
+
+                        // 3. Search content line by line
+                        try (
+                                InputStream input =
+                                        getContentResolver()
+                                                .openInputStream(file.getUri());
+
+                                BufferedReader reader =
+                                        new BufferedReader(
+                                                new InputStreamReader(
+                                                        input,
+                                                        Charset.forName(encoding)))
+                        ) {
+
+                            if (input == null) {
+                                continue;
+                            }
+
+                            int currentPosition = 0;
+                            String line;
+
+
+                            while ((line = reader.readLine()) != null) {
+
+                                if (stopSearchRequested ||
+                                        Thread.currentThread().isInterrupted()) {
+                                    break;
+                                }
+
+                                Matcher matcher = searchPattern.matcher(line);
+
+                                while (matcher.find()) {
+
+                                    String found = matcher.group();
+
+                                    if (found.isEmpty()) {
+                                        continue;
+                                    }
+
+                                    batch.add(new SearchResult(
+                                            fileName,
+                                            found,
+                                            getSearchPreview(line, matcher.start(), matcher.end()),
+                                            file,
+                                            folderUri,
+                                            currentPosition + matcher.start()));
+                                }
+
+                                // Match EditActivity's line-by-line loading,
+                                // which reconstructs the content using '\n'.
+                                currentPosition += line.length() + 1;
+                            }
+
+                        }
+
+                        // 4. Publish results for this file
+                        totalMatches += batch.size();
+
+                        publishSearchResults(batch);
+                    }
+                }
+
+            } catch (Exception e) {
+
+                Log.e("TXTNotes", "Search error", e);
+
+            }
+
+            final int resultCount = totalMatches;
+            final boolean stopped = stopSearchRequested;
+
+            mainHandler.post(() -> {
+
+                searchRunning = false;
+
+                if (searchDialog == null ||
+                        !searchDialog.isShowing()) {
+                    return;
+                }
+
+                searchActionButton.setEnabled(true);
+                searchActionButton.setText(R.string.search_new);
+
+                searchActionButton.setOnClickListener(v ->
+                        resetSearchDialog());
+
+                if (stopped) {
+
+                    searchStatus.setText(
+                            getString(R.string.search_stopped));
+
+                } else {
+
+                    searchStatus.setText(
+                            getString(
+                                    R.string.search_finished,
+                                    resultCount));
+
+                    searchStatus.setTypeface(null, Typeface.BOLD);
+                    searchStatus.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                }
+            });
+        });
+    }
+
+
+
+    private byte[] readAllFileBytes(DocumentFile file)
+            throws IOException {
+
+        try (
+                InputStream input =
+                        getContentResolver()
+                                .openInputStream(file.getUri());
+
+                ByteArrayOutputStream output =
+                        new ByteArrayOutputStream()
+        ) {
+
+            if (input == null) {
+                throw new IOException("Cannot open file");
+            }
+
+            byte[] buffer = new byte[8192];
+
+            int read;
+
+            while ((read = input.read(buffer)) != -1) {
+                output.write(buffer, 0, read);
+            }
+
+            return output.toByteArray();
+        }
+    }
+
+
+
+    private Pattern createSearchPattern(String query) {
+
+        boolean hasWildcard = query.contains("*");
+
+        StringBuilder regex = new StringBuilder();
+
+        for (int i = 0; i < query.length(); i++) {
+
+            char c = query.charAt(i);
+
+            if (c == '*') {
+                regex.append("\\S*");
+            } else {
+                regex.append(Pattern.quote(String.valueOf(c)));
+            }
+        }
+
+        if ("*".equals(query)) {
+            regex.setLength(0);
+            regex.append("\\S+");
+        } else if (!hasWildcard) {
+            regex.insert(0, "(?<![\\p{L}\\p{N}_])");
+            regex.append("(?![\\p{L}\\p{N}_])");
+        }
+
+        return Pattern.compile(
+                regex.toString(),
+                Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+    }
+
+
+
+    private String getSearchPreview(String line, int matchStart, int matchEnd) {
+
+        ArrayList<String> words = new ArrayList<>();
+        Matcher wordMatcher = Pattern.compile("\\S+").matcher(line);
+
+        int first = -1;
+        int last = -1;
+
+        while (wordMatcher.find()) {
+
+            int index = words.size();
+            words.add(wordMatcher.group());
+
+            if (wordMatcher.end() > matchStart && first == -1) {
+                first = index;
+            }
+
+            if (wordMatcher.start() < matchEnd) {
+                last = index;
+            }
+        }
+
+        if (first == -1) return line;
+
+        StringBuilder preview = new StringBuilder();
+
+        for (int i = Math.max(0, first - 1);
+             i <= Math.min(words.size() - 1, last + 1); i++) {
+
+            if (preview.length() > 0) preview.append(" ");
+
+            preview.append(words.get(i));
+        }
+
+        return preview.toString();
+    }
+
+
+
+    private void publishSearchResults(
+            ArrayList<SearchResult> batch) {
+
+        if (batch.isEmpty()) {
+            return;
+        }
+
+        ArrayList<SearchResult> copy =
+                new ArrayList<>(batch);
+
+        mainHandler.post(() -> {
+
+            if (searchDialog == null ||
+                    !searchDialog.isShowing()) {
+                return;
+            }
+
+            searchResults.addAll(copy);
+            searchAdapter.notifyDataSetChanged();
+        });
+    }
+
+
+    private void resetSearchDialog() {
+
+        if (searchRunning) {
+            return;
+        }
+
+        searchResults.clear();
+        searchAdapter.notifyDataSetChanged();
+
+        searchInput.setText("");
+        searchStatus.setText("");
+
+        searchActionButton.setText(R.string.search_start);
+        searchActionButton.setEnabled(true);
+
+        searchActionButton.setOnClickListener(v ->
+                startSearch());
+    }
+
+
+    // ---------------------------------------------------------
+    // SEARCH RESULT
+    // ---------------------------------------------------------
+
+
+    private static class SearchResult {
+
+        String fileName;
+        String matchedText;
+        String previewText;
+        DocumentFile file;
+        Uri folderUri;
+        int matchPosition;
+        int matchLength;
+
+        SearchResult(
+                String fileName,
+                String matchedText,
+                String previewText,
+                DocumentFile file,
+                Uri folderUri,
+                int matchPosition) {
+
+            this.fileName = fileName;
+            this.matchedText = matchedText;
+            this.previewText = previewText;
+            this.file = file;
+            this.folderUri = folderUri;
+            this.matchPosition = matchPosition;
+            this.matchLength = matchedText.length();
+        }
+
+        @Override
+        public String toString() {
+            return fileName + "  |  " + previewText;
+        }
+    }
+
+
 
     private void createNewFile() {
         // Case 1: No folder selected at all

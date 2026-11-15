@@ -67,4 +67,26 @@
     <string name="last_modified_placeholder">Последнее изменение: --</string>
     <string name="loading">Загрузка…</string>
     <string name="fileRenameButonTextString">Переименовать файл</string>
+
+    <!-- Search dialog -->
+
+    <string name="search_title">Поиск текста</string>
+    <string name="search_files">Поиск текста</string>
+    <string name="search">Поиск</string>
+    <string name="search_hint">Введите текст для поиска</string>
+    <string name="search_start">Начать поиск</string>
+    <string name="search_stop">Остановить поиск</string>
+    <string name="search_new">Новый поиск</string>
+    <string name="searching">Выполняется поиск...</string>
+    <string name="search_stopped">Поиск остановлен</string>
+    <string name="search_finished">Поиск завершён. Совпадений: %1$d \n
+    Нажмите на результат поиска, чтобы открыть файл на соответствующем фрагменте текста.</string>
+    <string name="search_no_folder">Папка не выбрана</string>
+    <string name="search_help">Поиск не учитывает регистр символов и проверяет как имена файлов, так и их содержимое.\n\n
+    Используйте символ подстановки * для поиска любой последовательности символов внутри слова.\n\n
+    Примеры:\n• transp* находит transport, transplant, transparent, transpire.\n
+    • *log* находит catalog, logging, biology.\n
+    • report*2026 находит report_final_2026, report-2026, report2026.</string>
+    <string name="cancel">Отмена</string>
+
 </resources>

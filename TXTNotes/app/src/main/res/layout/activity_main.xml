@@ -150,6 +150,35 @@
             android:backgroundTint="@android:color/holo_blue_light"
             />
 
+        <!-- Search button with icon and label -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp">
+
+            <ImageButton
+                android:id="@+id/searchButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/search_files"
+                android:padding="10dp"
+                android:src="@android:drawable/ic_menu_search"
+                android:tint="?attr/colorControlNormal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search"
+                android:textSize="12sp"
+                android:textColor="?android:attr/textColorPrimary" />
+
+        </LinearLayout>
+
         <!-- Spacer to push to the right -->
         <View
             android:layout_width="0dp"

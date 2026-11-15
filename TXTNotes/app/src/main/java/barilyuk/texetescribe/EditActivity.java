@@ -141,6 +141,43 @@ public class EditActivity extends AppCompatActivity {
         loadFileContent();
         undoRedo.clearHistory();
 
+        // Navigate to the search match, if supplied
+        int searchPosition = intent.getIntExtra(
+                "search_position", -1);
+
+        int searchLength = intent.getIntExtra(
+                "search_length", 0);
+
+        if (searchPosition >= 0 &&
+                searchPosition < editText.length()) {
+
+            int start = searchPosition;
+            int end = Math.min(
+                    start + searchLength,
+                    editText.length());
+
+            editText.post(() -> {
+
+                editText.requestFocus();
+
+                // Select the matching text
+                editText.setSelection(start, end);
+
+                // Scroll vertically to the matching line
+                android.text.Layout layout = editText.getLayout();
+
+                if (layout != null) {
+
+                    int line = layout.getLineForOffset(start);
+
+                    int scrollY = layout.getLineTop(line);
+
+                    editText.scrollTo(0, scrollY);
+                }
+            });
+        }
+
+
         // Set text change listener to detect edits
         editText.addTextChangedListener(new TextWatcher() {
 

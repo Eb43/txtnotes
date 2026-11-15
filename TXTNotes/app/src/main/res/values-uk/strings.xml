@@ -67,4 +67,26 @@
     <string name="encoding_placeholder">Кодування</string>
     <string name="last_modified_placeholder">Остання зміна: --</string>
     <string name="loading">Завантаження…</string>
+
+    <!-- Search dialog -->
+
+    <string name="search_title">Пошук тексту</string>
+    <string name="search_files">Пошук тексту</string>
+    <string name="search">Пошук</string>
+    <string name="search_hint">Введіть текст для пошуку</string>
+    <string name="search_start">Почати пошук</string>
+    <string name="search_stop">Зупинити пошук</string>
+    <string name="search_new">Новий пошук</string>
+    <string name="searching">Пошук...</string>
+    <string name="search_stopped">Пошук зупинено</string>
+    <string name="search_finished">Пошук завершено. Збігів: %1$d \n
+    Натисніть на результат пошуку, щоб відкрити файл на відповідному фрагменті тексту.</string>
+    <string name="search_no_folder">Папку не вибрано</string>
+    <string name="search_help">Пошук не враховує регістр символів і перевіряє як назви файлів, так і їхній вміст.\n\n
+   Використовуйте символ підстановки * для пошуку будь-якої послідовності символів усередині слова.\n\n
+   Приклади:\n• transp* знаходить transport, transplant, transparent, transpire.\n
+   • *log* знаходить catalog, logging, biology.\n
+   • report*2026 знаходить report_final_2026, report-2026, report2026.</string>
+    <string name="cancel">Скасувати</string>
+
 </resources>
